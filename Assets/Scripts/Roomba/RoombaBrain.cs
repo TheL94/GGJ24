@@ -22,24 +22,21 @@ public class RoombaBrain : MonoBehaviour
     public float acceleration;
     public float turningAcceleration;
 
-    private Animator animator;
+    protected Animator animator;
 
-    private float currentSpeed;
-    private float currentRotationSpeed;
+    protected float currentSpeed;
+    protected float currentRotationSpeed;
 
-    private float currentTargetSpeed;
-    private float currentTargetRotationSpeed;
+    protected float currentTargetSpeed;
+    protected float currentTargetRotationSpeed;
 
-    private bool targetDetected;
-    private bool bumped;
+    protected bool targetDetected;
+    protected bool bumped;
 
-    private int numberOfCollisions = 0;
+    protected int numberOfCollisions = 0;
 
     private void Start()
     {
-        ///TEST
-        Target = FindAnyObjectByType<PlayerMovementBehaviour>().transform;
-        ///
         Init();
     }
 
@@ -61,19 +58,18 @@ public class RoombaBrain : MonoBehaviour
         currentRotationSpeed = Mathf.Clamp(currentRotationSpeed, -absoluteRotationSpeed, absoluteRotationSpeed);
     }
 
-    private void Init()
+    protected virtual void Init()
     {
         TargetDetected = false;
         Bumped = false;
-
-        //playerRoombaFov = GetComponent<RoombaFOV>();
     }
 
     public void SearchForTarget()
     {
         TargetDetected = playerRoombaFov.FindObject(playerLayerMask, out RaycastHit hit);
 
-        Target = hit.transform;
+        if (hit.transform != null)
+            Target = hit.transform;
     }
 
     public void StopMoving()
