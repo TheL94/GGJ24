@@ -174,9 +174,8 @@ namespace SplitFace.ModularSpawnSystem
 
             usedSlots -= spawnedUnit.unitData.slotsOccupied;
 
-            if (!waitForEmptyWave && !currentWave.HasPrefabAvailable(maxSlots - usedSlots))
-                SwitchWave();
-            else if (waitForEmptyWave && currentWave.isWaveEmpty && usedSlots == 0)
+            if ((!waitForEmptyWave && !currentWave.HasPrefabAvailable(maxSlots - usedSlots) && !(currentWave.timeBeforeNextWave > 0))
+                || (waitForEmptyWave && currentWave.isWaveEmpty && usedSlots == 0) && !(currentWave.timeBeforeNextWave > 0))
                 SwitchWave();
         }
 
@@ -278,6 +277,12 @@ namespace SplitFace.ModularSpawnSystem
                 #endregion
 
                 yield return new WaitForSeconds(spawnDelay);
+            }
+
+            if (currentWave.timeBeforeNextWave > 0)
+            {
+                yield return new WaitForSecondsRealtime(currentWave.timeBeforeNextWave);
+                SwitchWave();
             }
         }
 

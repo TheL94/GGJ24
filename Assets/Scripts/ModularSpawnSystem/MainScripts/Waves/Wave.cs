@@ -14,6 +14,7 @@ namespace SplitFace.ModularSpawnSystem
 
         public string waveName = "New Wave";
         public bool shuffleOnSpawn = true;
+        public float timeBeforeNextWave = 0;
         public bool isInfinite = false;
 
         public List<WaveUnit> unitsToSpawn = new List<WaveUnit>();
