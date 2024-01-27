@@ -14,6 +14,7 @@ namespace SplitFace.ModularSpawnSystem
 
         public string waveName = "New Wave";
         public bool shuffleOnSpawn = true;
+        public bool isInfinite = false;
 
         public List<WaveUnit> unitsToSpawn = new List<WaveUnit>();
 
@@ -46,7 +47,8 @@ namespace SplitFace.ModularSpawnSystem
 
             if (availablePrefab.slotsOccupied <= slotsToFill && availablePrefab.count > 0)
             {
-                availablePrefab.count--;
+                if (!isInfinite)
+                    availablePrefab.count--;
 
                 if (shuffleOnSpawn)
                     unitsToSpawn.Shuffle();
@@ -64,11 +66,11 @@ namespace SplitFace.ModularSpawnSystem
         /// <returns></returns>
         public bool HasPrefabAvailable(int slotsToFill)
         {
-            foreach (WaveUnit enemyData in unitsToSpawn)
+            foreach (WaveUnit unitData in unitsToSpawn)
             {
-                if (enemyData.slotsOccupied <= slotsToFill && enemyData.count > 0)
+                if (unitData.slotsOccupied <= slotsToFill && unitData.count > 0)
                 {
-                    availablePrefab = enemyData;
+                    availablePrefab = unitData;
 
                     return true;
                 }

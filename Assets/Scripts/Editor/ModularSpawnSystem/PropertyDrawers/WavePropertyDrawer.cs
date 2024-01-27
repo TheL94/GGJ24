@@ -26,8 +26,8 @@ namespace SplitFace.ModularSpawnSystem.SpawnSystemEditor
             EditorGUI.BeginProperty(position, label, property);
 
             var shuffleOnSpawn = assetObject.FindProperty("shuffleOnSpawn");
+            var isInfinite = assetObject.FindProperty("isInfinite");
             var waveName = assetObject.FindProperty("waveName");
-
 
             if (!editToggle)
             {
@@ -59,6 +59,16 @@ namespace SplitFace.ModularSpawnSystem.SpawnSystemEditor
 
             position.y += EditorGUIUtility.singleLineHeight;
 
+            isInfinite.boolValue = GUI.Toggle(new Rect(
+                position.x,
+                position.y,
+                position.width / 2 - 5,
+                EditorGUIUtility.singleLineHeight),
+                isInfinite.boolValue,
+                "Is Infinite");
+
+            position.y += EditorGUIUtility.singleLineHeight;
+
             EditorGUI.PropertyField(position, assetObject.FindProperty("unitsToSpawn"), true);
 
             property.serializedObject.ApplyModifiedProperties();
@@ -75,7 +85,7 @@ namespace SplitFace.ModularSpawnSystem.SpawnSystemEditor
             var assetObject = new SerializedObject(property.objectReferenceValue);
             var unitsList = assetObject.FindProperty("unitsToSpawn");
 
-            return editToggle ? EditorGUI.GetPropertyHeight(unitsList) + 4f * EditorGUIUtility.singleLineHeight : (EditorGUIUtility.singleLineHeight + 2f) * 2f;
+            return editToggle ? EditorGUI.GetPropertyHeight(unitsList) + 5f * EditorGUIUtility.singleLineHeight : (EditorGUIUtility.singleLineHeight + 2f) * 2f;
         }
     }
 }
