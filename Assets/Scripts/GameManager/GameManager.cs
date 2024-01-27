@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SplitFace.ModularSpawnSystem;
+using System.IO;
+using System.Linq;
+using UnityEngine.SceneManagement;
+
 public class GameManager : MonoBehaviour
 {
 
     private static GameManager _instance;
-
-
+   
     public static GameManager Instance
     {
         get
@@ -19,7 +22,8 @@ public class GameManager : MonoBehaviour
             return _instance;
         }
     }
-
+    public Scores scores;
+    string scoresPath = Path.Combine(Application.streamingAssetsPath, "HighScores.json");
     public int Points;
 
     public WaveSpawner enemySpawner;
@@ -51,28 +55,79 @@ public class GameManager : MonoBehaviour
     {
         gamePhase = GamePhase.STARTINGCUTSCENE;
         StartCoroutine(CoStartinCutscene());
+        scores = JsonUtility.FromJson<Scores>(File.ReadAllText(scoresPath));
+        scores.highScores = scores.highScores.OrderBy(x => x.Score).ToList();
+        scores.highScores.Reverse();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    
-    IEnumerator CoStartinCutscene()
+
+    public IEnumerator CoStartinCutscene()
     {
         Debug.Log("enjoy the spawning");
         yield return null;
         gamePhase = GamePhase.GAMESTART;
-      //  enemySpawner.StartSpawner();
+        //  enemySpawner.StartSpawner();
         bigItemSpawner.StartSpawner();
-       //  mediumItemSpawner.StartSpawner();
-       // smallItemSPawner.StartSpawner();
+        mediumItemSpawner.StartSpawner();
+        smallItemSPawner.StartSpawner();
         Debug.Log("staerted spawning");
         yield return null;
         gamePhase = GamePhase.PLAYNG;
         Debug.Log("game stared!!");
 
     }
+
+    
+    public IEnumerator CoGameOver()
+    {
+        //start end cutscene
+        gamePhase = GamePhase.GAMEOVER;
+        yield return null;
+        //high score check
+
+        if (Points >= scores.highScores[scores.highScores.Count-1].Score)
+        {
+            UIManager.Instance.highscoreInsertion.gameObject.SetActive(true);
+            UIManager.Instance.finalScore.text = Points+"";
+        }
+    }
+
+    public void OverwriteHighSore()
+    {
+        if (File.Exists(scoresPath))
+        {
+            scores = JsonUtility.FromJson<Scores>(File.ReadAllText(scoresPath));
+        }
+        else
+        {
+            var c = File.Create(scoresPath);
+            c.Close();
+          
+        }
+
+        File.WriteAllText(scoresPath, JsonUtility.ToJson(scores));
+
+        SceneManager.LoadScene("MainMenu");
+    }
+
+}
+
+
+[System.Serializable]
+public class HighScore
+{
+   public string Name;
+   public int Score;
+}
+
+[System.Serializable]
+public class Scores
+{
+    public List<HighScore> highScores; 
 }

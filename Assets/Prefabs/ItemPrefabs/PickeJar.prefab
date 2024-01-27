@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4822997576273921262}
   - component: {fileID: 3849545960670721757}
-  m_Layer: 0
+  - component: {fileID: 4972680864064784275}
+  m_Layer: 6
   m_Name: PickeJar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,6 +50,33 @@ MonoBehaviour:
   value: 0
   maxValue: 25
   minValue: 10
+--- !u!54 &4972680864064784275
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8216877903943123366}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &8925323723986739906
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,7 +89,7 @@ GameObject:
   - component: {fileID: 8833069777676627211}
   - component: {fileID: 1800924444171390638}
   - component: {fileID: 5950148828972833977}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

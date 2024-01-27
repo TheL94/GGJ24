@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8f717fa89ceae24c82cdb7b0458b5e8, type: 3}
+  m_Name: MediumItemWave
+  m_EditorClassIdentifier: 
+  waveName: MediumItem
+  shuffleOnSpawn: 1
+  isInfinite: 1
+  unitsToSpawn:
+  - prefab: {fileID: 6370847240544035606, guid: cbca011eec3dc9749bec6606a3819322,
+      type: 3}
+    unitName: 
+    slotsOccupied: 1
+    count: 0
+    amountToSpawn: 1
+  - prefab: {fileID: 591689062234127937, guid: f47853faf8e171e499af5bfe37924f2f, type: 3}
+    unitName: 
+    slotsOccupied: 1
+    count: 0
+    amountToSpawn: 1
+  - prefab: {fileID: 4802414957635229637, guid: eb77c1aa124d113448d1a913c39b39b8,
+      type: 3}
+    unitName: 
+    slotsOccupied: 1
+    count: 0
+    amountToSpawn: 1
+  - prefab: {fileID: 5470883534817241381, guid: 246c62f07df4e4c478cac64d8b5a4596,
+      type: 3}
+    unitName: 
+    slotsOccupied: 1
+    count: 0
+    amountToSpawn: 1
+  unitsLeft: 0
