@@ -5,9 +5,12 @@ using UnityEngine;
 public class RoombaBrain : MonoBehaviour
 {
     public bool PlayerDetected { get => playerDetected; set { Animator.SetBool("PlayerDetected", value); playerDetected = value; } }
+    public bool Bumped { get => bumped; set { Animator.SetBool("Bumped", value); bumped = value; } }
     public PlayerMovementBehaviour Player { get; private set; }
     public StateMachineBehaviour CurrentState { get; set; }
     public Animator Animator { get { if (animator == null) animator = GetComponent<Animator>(); return animator; } }
+
+    [SerializeField] private BumpCollider bumpCollider;
 
     public float speed;
     public float turningSpeed;
@@ -25,6 +28,9 @@ public class RoombaBrain : MonoBehaviour
     private float currentTargetRotationSpeed;
 
     private bool playerDetected;
+    private bool bumped;
+
+    private int numberOfCollisions = 0;
 
     private void Start()
     {
@@ -54,6 +60,14 @@ public class RoombaBrain : MonoBehaviour
     private void Init()
     {
         PlayerDetected = false;
+
+        Bumped = true;
+
+        //bumpCollider.OnTriggerEnterEvent -= CollisionEnterCallback;
+        //bumpCollider.OnTriggerEnterEvent += CollisionEnterCallback;
+
+        //bumpCollider.OnTriggerEnterEvent -= CollisionExitCallback;
+        //bumpCollider.OnTriggerEnterEvent += CollisionExitCallback;
     }
 
     public void StopMoving()
@@ -62,7 +76,7 @@ public class RoombaBrain : MonoBehaviour
         currentRotationSpeed = 0;
     }
 
-    public void MoveToRelative(Vector3 targetDirection)
+    public void MoveToRelative(Vector3 targetDirection, float targetSpeed)
     {
         Debug.DrawRay(transform.position, targetDirection);
 
@@ -70,7 +84,35 @@ public class RoombaBrain : MonoBehaviour
 
         error = Mathf.Clamp(error, -1f, 1f);
 
-        currentTargetSpeed = speed * (1 - Mathf.Abs(error));
+        currentTargetSpeed = targetSpeed * (1 - Mathf.Abs(error));
         currentTargetRotationSpeed = turningSpeed * error;
+    }
+
+    public void RotateToDirection(Vector3 targetDirection, float targetSpeed)
+    {
+        Debug.DrawRay(transform.position, targetDirection);
+
+        float signedAngle = Vector3.SignedAngle(transform.forward, targetDirection, transform.up) / angleThreshold;
+
+        currentTargetSpeed = 0;
+        currentTargetRotationSpeed = Mathf.Sign(signedAngle) * targetSpeed;
+    }
+
+    private void CollisionEnterCallback(Collider collision)
+    {
+        if (collision.gameObject == this)
+            return;
+
+        numberOfCollisions++;
+        Bumped = numberOfCollisions > 0;
+    }
+
+    private void CollisionExitCallback(Collider collision)
+    {
+        if (collision.gameObject == this)
+            return;
+
+        numberOfCollisions--;
+        Bumped = numberOfCollisions > 0;
     }
 }
