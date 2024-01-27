@@ -9,5 +9,6 @@ public class RoombaWanderingState : RoombaState
         base.OnStateUpdate(animator, stateInfo, layerIndex);
 
         brainInstance.MoveToRelative(brainInstance.transform.forward, brainInstance.speed);
+        brainInstance.SearchForPlayer();
     }
 }

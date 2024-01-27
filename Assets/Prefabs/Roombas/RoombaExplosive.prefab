@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1281082542567222928}
   - component: {fileID: 8133776031075459691}
   m_Layer: 0
-  m_Name: RoombaPlaceholder
+  m_Name: RoombaExplosive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

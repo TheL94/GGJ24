@@ -10,7 +10,9 @@ public class RoombaBrain : MonoBehaviour
     public StateMachineBehaviour CurrentState { get; set; }
     public Animator Animator { get { if (animator == null) animator = GetComponent<Animator>(); return animator; } }
 
-    //[SerializeField] private BumpCollider bumpCollider;
+    public RoombaFOV RoombaFOV { get; private set; }
+
+    [SerializeField] LayerMask playerLayerMask;
 
     public float speed;
     public float turningSpeed;
@@ -61,6 +63,15 @@ public class RoombaBrain : MonoBehaviour
     private void Init()
     {
         PlayerDetected = false;
+        Bumped = false;
+
+        RoombaFOV = GetComponent<RoombaFOV>();
+    }
+
+    public void SearchForPlayer()
+    {
+        PlayerDetected = RoombaFOV.FindObject(playerLayerMask, out RaycastHit hit) &&
+            hit.collider.gameObject.TryGetComponent<PlayerMovementBehaviour>(out PlayerMovementBehaviour playerMovementBehaviour);
     }
 
     public void StopMoving()
