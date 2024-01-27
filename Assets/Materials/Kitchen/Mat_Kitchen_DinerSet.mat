@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mat_Tiling_Metal_01
+  m_Name: Mat_Kitchen_DinerSet
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_Parent: {fileID: 2100000, guid: 874f569d11eb6ba4ea95005d0f85fa0b, type: 2}
+  m_Parent: {fileID: 2100000, guid: 361a63a1fb5ef3340be06aeb7f3c03bf, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _METALLICSPECGLOSSMAP
@@ -27,26 +27,26 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: be6427920732e1d4e85dd84c52ca14bd, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1085a16b7290bb34e8473fc21cc90f09, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: b70fe5a1becd6be4088c1d284f48d3d9, type: 3}
+        m_Texture: {fileID: 2800000, guid: f94fb1d0b8a86f54bad6b4616fbd5e30, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: be6427920732e1d4e85dd84c52ca14bd, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1085a16b7290bb34e8473fc21cc90f09, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 404755795866858479e06776f5756420, type: 3}
+        m_Texture: {fileID: 2800000, guid: f2b93bb6257a3e846a616ff8e5cea598, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats: []
     m_Colors: []
   m_BuildTextureStacks: []
---- !u!114 &488797277029086065
+--- !u!114 &9092826374391450350
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
