@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class RoombaWanderingState : RoombaState
 {
-    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        base.OnStateEnter(animator, stateInfo, layerIndex);
+        base.OnStateUpdate(animator, stateInfo, layerIndex);
+
+        brainInstance.MoveToRelative(brainInstance.transform.forward, brainInstance.speed);
     }
 }

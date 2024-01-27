@@ -10,6 +10,6 @@ public class RoombaChaseState : RoombaState
 
         Vector3 targetPosition = Vector3.ProjectOnPlane(brainInstance.Player.transform.position, brainInstance.transform.up);
 
-        brainInstance.MoveToRelative((targetPosition - brainInstance.transform.position).normalized);
+        brainInstance.MoveToRelative((targetPosition - brainInstance.transform.position).normalized, brainInstance.speed);
     }
 }

@@ -120,11 +120,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a94d88acd61c64984ac04086142101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.5
-  turningSpeed: 10
+  speed: 6
+  turningSpeed: 50
   angleThreshold: 45
-  acceleration: 0.2
-  turningAcceleration: 1.5
+  acceleration: 1.5
+  turningAcceleration: 5
 --- !u!95 &8133776031075459691
 Animator:
   serializedVersion: 5
