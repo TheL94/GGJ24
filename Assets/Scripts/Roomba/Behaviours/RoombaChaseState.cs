@@ -8,7 +8,8 @@ public class RoombaChaseState : RoombaState
     {
         base.OnStateUpdate(animator, stateInfo, layerIndex);
 
+        Vector3 targetPosition = Vector3.ProjectOnPlane(brainInstance.Player.transform.position, brainInstance.transform.up);
 
-        brainInstance.MoveToRelative(new Vector3(-1f, 0, 0f));
+        brainInstance.MoveToRelative((targetPosition - brainInstance.transform.position).normalized);
     }
 }

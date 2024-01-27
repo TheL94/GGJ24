@@ -36,11 +36,13 @@ public class RoombaBrain : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(transform.forward * currentSpeed * Time.deltaTime);
+        Debug.DrawRay(transform.position, transform.forward, Color.red);
+
+        transform.position += (transform.forward * currentSpeed * Time.deltaTime);
         transform.Rotate(transform.up * currentRotationSpeed * Time.deltaTime);
 
-        currentSpeed += currentTargetSpeed * acceleration * Mathf.Sign(currentTargetSpeed) * Time.deltaTime;
-        currentRotationSpeed += currentTargetRotationSpeed * turningAcceleration * Mathf.Sign(currentTargetRotationSpeed) * Time.deltaTime;
+        currentSpeed += currentTargetSpeed * acceleration * Time.deltaTime;
+        currentRotationSpeed += currentTargetRotationSpeed * turningAcceleration * Time.deltaTime;
 
         float absoluteTargetSpeed = Mathf.Abs(currentTargetSpeed);
         currentSpeed = Mathf.Clamp(currentSpeed, -absoluteTargetSpeed, absoluteTargetSpeed);
