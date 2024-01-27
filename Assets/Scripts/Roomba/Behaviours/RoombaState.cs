@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class RoombaState : StateMachineBehaviour
 {
-    protected IRoombaBrain brainInstance { get; private set; }
+    protected RoombaBrain brainInstance { get; private set; }
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        brainInstance = animator.GetComponent<IRoombaBrain>();
+        brainInstance = animator.GetComponent<RoombaBrain>();
     }
 }
