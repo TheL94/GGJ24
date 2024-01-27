@@ -64,6 +64,11 @@ namespace SplitFace.ModularSpawnSystem
         /// </summary>
         public void StartSpawner()
         {
+            for (int i = 0; i < waves.Count; i++)
+            {
+                waves[i] = new Wave(waves[i]);
+            }
+
             currentWave = waves[0];
             currentWave.Initialize();
 
@@ -122,25 +127,28 @@ namespace SplitFace.ModularSpawnSystem
         /// </summary>
         private void CleanUnitList()
         {
-            if (activeUnits.Count > 0)
-            {
-                foreach (SpawnedUnit unit in activeUnits)
-                {
-                    Destroy(unit.gameObject);
-                }
+            activeUnits = new List<SpawnedUnit>();
+            activeFodderUnits = new List<SpawnedUnit>();
 
-                activeUnits = new List<SpawnedUnit>();
-            }
+            //if (activeUnits.Count > 0)
+            //{
+            //    foreach (SpawnedUnit unit in activeUnits)
+            //    {
+            //        Destroy(unit.gameObject);
+            //    }
 
-            if (activeFodderUnits.Count > 0)
-            {
-                foreach (SpawnedUnit unit in activeFodderUnits)
-                {
-                    Destroy(unit.gameObject);
-                }
+            //    activeUnits = new List<SpawnedUnit>();
+            //}
 
-                activeFodderUnits = new List<SpawnedUnit>();
-            }
+            //if (activeFodderUnits.Count > 0)
+            //{
+            //    foreach (SpawnedUnit unit in activeFodderUnits)
+            //    {
+            //        Destroy(unit.gameObject);
+            //    }
+
+            //    activeFodderUnits = new List<SpawnedUnit>();
+            //}
         }
 
         /// <summary>
@@ -170,13 +178,11 @@ namespace SplitFace.ModularSpawnSystem
         private void OnUnitDeath(SpawnedUnit spawnedUnit)
         {
             activeUnits.Remove(spawnedUnit);
-            currentWave.unitsLeft--;
 
             usedSlots -= spawnedUnit.unitData.slotsOccupied;
 
-            if (!waitForEmptyWave && !currentWave.HasPrefabAvailable(maxSlots - usedSlots))
-                SwitchWave();
-            else if (waitForEmptyWave && currentWave.isWaveEmpty && usedSlots == 0)
+            if ((!waitForEmptyWave && !currentWave.HasPrefabAvailable(maxSlots - usedSlots) && !(currentWave.timeBeforeNextWave > 0))
+                || (waitForEmptyWave && currentWave.isWaveEmpty && usedSlots == 0) && !(currentWave.timeBeforeNextWave > 0))
                 SwitchWave();
         }
 
@@ -190,7 +196,6 @@ namespace SplitFace.ModularSpawnSystem
         private void OnUnitEnabled(SpawnedUnit spawnedUnit)
         {
             activeUnits.Add(spawnedUnit);
-            currentWave.unitsLeft++;
 
             usedSlots += spawnedUnit.unitData.slotsOccupied;
         }
@@ -279,15 +284,18 @@ namespace SplitFace.ModularSpawnSystem
 
                 yield return new WaitForSeconds(spawnDelay);
             }
+
+            if (currentWave.timeBeforeNextWave > 0)
+            {
+                yield return new WaitForSecondsRealtime(currentWave.timeBeforeNextWave);
+                SwitchWave();
+            }
         }
 
         IEnumerator SpawnFodderUnits()
         {
-            while (true)
+            while (enableFodderUnits)
             {
-                if (!enableFodderUnits)
-                    yield return new WaitForSeconds(spawnDelay);
-
                 #region FODDER UNITS
 
                 int slotsToFill = maxFodderSlots - usedFodderSlots;

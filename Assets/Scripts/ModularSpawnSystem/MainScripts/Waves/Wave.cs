@@ -9,11 +9,12 @@ namespace SplitFace.ModularSpawnSystem
     [CreateAssetMenu(fileName = "New Wave", menuName = "WaveSpawner/New wave")]
     public class Wave : ScriptableObject
     {
-        public bool isWaveEmpty { get { return unitsLeft == 0; } }
+        public bool isWaveEmpty { get { return unitsLeft == 0 && !isInfinite; } }
         public WaveUnit AvailablePrefab { get { return availablePrefab; } }
 
         public string waveName = "New Wave";
         public bool shuffleOnSpawn = true;
+        public float timeBeforeNextWave = 0;
         public bool isInfinite = false;
 
         public List<WaveUnit> unitsToSpawn = new List<WaveUnit>();
@@ -21,6 +22,16 @@ namespace SplitFace.ModularSpawnSystem
         public int unitsLeft = 0;
 
         private WaveUnit availablePrefab;
+
+        public Wave(Wave wave)
+        {
+            waveName = wave.waveName;
+            shuffleOnSpawn = wave.shuffleOnSpawn;
+            timeBeforeNextWave = wave.timeBeforeNextWave;
+            isInfinite = wave.isInfinite;
+
+            unitsToSpawn = wave.unitsToSpawn;
+        }
 
         /// <summary>
         /// Initializes the wave, resetting the count of enemies to spawn
@@ -53,6 +64,7 @@ namespace SplitFace.ModularSpawnSystem
                 if (shuffleOnSpawn)
                     unitsToSpawn.Shuffle();
 
+                unitsLeft--;
                 return (availablePrefab.slotsOccupied, availablePrefab.prefab);
             }
 
