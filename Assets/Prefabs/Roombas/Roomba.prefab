@@ -13,9 +13,11 @@ GameObject:
   - component: {fileID: 8143472241445515842}
   - component: {fileID: 6589319410044407758}
   - component: {fileID: 1281082542567222928}
+  - component: {fileID: 1890107978481718449}
   - component: {fileID: 8133776031075459691}
+  - component: {fileID: 2103992397530608897}
   m_Layer: 0
-  m_Name: RoombaPlaceholder
+  m_Name: Roomba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,11 +122,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a94d88acd61c64984ac04086142101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerRoombaFov: {fileID: 1890107978481718449}
+  turningRoombaFov: {fileID: 2103992397530608897}
+  playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
   speed: 6
   turningSpeed: 50
   angleThreshold: 45
   acceleration: 1.5
   turningAcceleration: 5
+--- !u!114 &1890107978481718449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71385966583641626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db92bb2e57f3a4341ae8690995a6b3b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nRay: 50
+  degrees: 75
+  distance: 8
 --- !u!95 &8133776031075459691
 Animator:
   serializedVersion: 5
@@ -146,6 +168,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2103992397530608897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71385966583641626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db92bb2e57f3a4341ae8690995a6b3b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nRay: 50
+  degrees: 180
+  distance: 5
 --- !u!1 &7308116947012044465
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ public class RoombaBumpState : RoombaState
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
 
-        turnRight = true;
+        turnRight = brainInstance.turningRoombaFov.CountRaysSideways(true) < brainInstance.turningRoombaFov.CountRaysSideways(false);
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
