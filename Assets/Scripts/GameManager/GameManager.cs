@@ -23,7 +23,9 @@ public class GameManager : MonoBehaviour
     public int Points;
 
     public WaveSpawner enemySpawner;
-    public WaveSpawner itemSpawner;
+    public WaveSpawner bigItemSpawner;
+    public WaveSpawner mediumItemSpawner;
+    public WaveSpawner smallItemSPawner;
 
     public enum GamePhase
     {
@@ -48,11 +50,29 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         gamePhase = GamePhase.STARTINGCUTSCENE;
+        StartCoroutine(CoStartinCutscene());
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    
+    IEnumerator CoStartinCutscene()
+    {
+        Debug.Log("enjoy the spawning");
+        yield return null;
+        gamePhase = GamePhase.GAMESTART;
+        enemySpawner.StartSpawner();
+        bigItemSpawner.StartSpawner();
+        mediumItemSpawner.StartSpawner();
+        smallItemSPawner.StartSpawner();
+        Debug.Log("staerted spawning");
+        yield return null;
+        gamePhase = GamePhase.PLAYNG;
+        Debug.Log("game stared!!");
+
     }
 }
