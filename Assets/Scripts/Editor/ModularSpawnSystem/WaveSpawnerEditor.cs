@@ -13,11 +13,19 @@ namespace SplitFace.ModularSpawnSystem.SpawnSystemEditor
     {
         bool editWaves = false;
 
+        ReorderableList waves;
+
+        Dictionary<string, bool> waveListToggles = new Dictionary<string, bool>();
+
         WaveSpawner waveSpawnerTarget { get { return target as WaveSpawner; } }
 
         void OnEnable()
         {
+            waves = new ReorderableList(serializedObject,
+                    serializedObject.FindProperty("waves"),
+                    true, true, true, true);
 
+            SetupWavesList();
         }
 
         public override void OnInspectorGUI()
@@ -32,7 +40,7 @@ namespace SplitFace.ModularSpawnSystem.SpawnSystemEditor
 
                 EditorGUILayout.Space();
 
-                EditorGUILayout.PropertyField(serializedObject.FindProperty("waves"));
+                waves.DoLayoutList();
 
                 EditorGUILayout.Space();
 
@@ -76,6 +84,45 @@ namespace SplitFace.ModularSpawnSystem.SpawnSystemEditor
             EditorGUILayout.Space();
 
             EditorGUILayout.PropertyField(serializedObject.FindProperty("spawnPoints"));
+        }
+
+        void SetupWavesList()
+        {
+            waves.drawHeaderCallback = (Rect rect) =>
+            {
+                EditorGUI.LabelField(rect, "Waves");
+            };
+
+            waves.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) =>
+            {
+                var element = waves.serializedProperty.GetArrayElementAtIndex(index);
+
+                EditorGUI.PropertyField(rect, element, true);
+            };
+
+            waves.elementHeightCallback = (index) =>
+            {
+                var element = waves.serializedProperty.GetArrayElementAtIndex(index);
+
+                return EditorGUI.GetPropertyHeight(element);
+            };
+
+            waves.onAddCallback = (ReorderableList list) =>
+            {
+                var index = list.serializedProperty.arraySize;
+
+                list.serializedProperty.arraySize++;
+                list.index = index;
+            };
+
+
+            waves.onAddCallback = (ReorderableList list) =>
+            {
+                var index = list.serializedProperty.arraySize;
+
+                list.serializedProperty.arraySize++;
+                list.index = index;
+            };
         }
     }
 }

@@ -8,19 +8,37 @@ namespace SplitFace.ModularSpawnSystem.SpawnSystemEditor
     [CustomPropertyDrawer(typeof(Wave))]
     public class WavePropertyDrawer : PropertyDrawer
     {
-        SerializedProperty unitsList;
+        bool editToggle = false;
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            if (property == null)
-                return;
+            EditorGUI.PropertyField(new Rect(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight + 2f), property, label);
 
-            unitsList = property.FindPropertyRelative("unitsToSpawn");
+            if (property.objectReferenceValue == null)
+            {
+                return;
+            }
+
+            position.y += EditorGUIUtility.singleLineHeight;
+
+            var assetObject = new SerializedObject(property.objectReferenceValue);
 
             EditorGUI.BeginProperty(position, label, property);
 
-            var shuffleOnSpawn = property.FindPropertyRelative("shuffleOnSpawn");
-            var waveName = property.FindPropertyRelative("waveName");
+            var shuffleOnSpawn = assetObject.FindProperty("shuffleOnSpawn");
+            var waveName = assetObject.FindProperty("waveName");
+
+
+            if (!editToggle)
+            {
+                GUI.Box(new Rect(position.x, position.y + 1f, position.width / 2 - 5, EditorGUIUtility.singleLineHeight + 2f), waveName.stringValue);
+                editToggle = GUI.Button(new Rect(position.x + position.width - position.width / 2, position.y + 3f, position.width / 2 - 5, EditorGUIUtility.singleLineHeight), "Edit");
+                return;
+            }
+
+            editToggle = !GUI.Button(new Rect(position.x, position.y, position.width / 2 - 5, EditorGUIUtility.singleLineHeight), "Done");
+
+            position.y += EditorGUIUtility.singleLineHeight + 2f;
 
             waveName.stringValue = EditorGUI.TextField(new Rect(position.x,
                 position.y,
@@ -41,19 +59,23 @@ namespace SplitFace.ModularSpawnSystem.SpawnSystemEditor
 
             position.y += EditorGUIUtility.singleLineHeight;
 
-            EditorGUI.PropertyField(position, unitsList, true);
-            //UnitsList.DoList(position);
+            EditorGUI.PropertyField(position, assetObject.FindProperty("unitsToSpawn"), true);
 
             property.serializedObject.ApplyModifiedProperties();
+            assetObject.ApplyModifiedProperties();
 
             EditorGUI.EndProperty();
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            unitsList = property.FindPropertyRelative("unitsToSpawn");
+            if (property.objectReferenceValue == null)
+                return EditorGUIUtility.singleLineHeight;
 
-            return EditorGUI.GetPropertyHeight(unitsList) + 2 * EditorGUIUtility.singleLineHeight;
+            var assetObject = new SerializedObject(property.objectReferenceValue);
+            var unitsList = assetObject.FindProperty("unitsToSpawn");
+
+            return editToggle ? EditorGUI.GetPropertyHeight(unitsList) + 4f * EditorGUIUtility.singleLineHeight : (EditorGUIUtility.singleLineHeight + 2f) * 2f;
         }
     }
 }
