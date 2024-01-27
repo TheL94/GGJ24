@@ -283,11 +283,8 @@ namespace SplitFace.ModularSpawnSystem
 
         IEnumerator SpawnFodderUnits()
         {
-            while (true)
+            while (enableFodderUnits)
             {
-                if (!enableFodderUnits)
-                    yield return new WaitForSeconds(spawnDelay);
-
                 #region FODDER UNITS
 
                 int slotsToFill = maxFodderSlots - usedFodderSlots;
