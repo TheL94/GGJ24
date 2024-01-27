@@ -1,17 +1,30 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerInteraction : MonoBehaviour
 {
     private PlayerInput playerInput;
-    private InputAction interactAction;
+    private PlayerSlotManager playerSlots;
+
+    private InputAction grabAction;
+    private InputAction releaseAction;
 
     private IInteractable latestInteract;
+
+    public static UnityAction<Pickable> onTakeObject;
+    public static UnityAction onReleaseObject;
 
     private void Start()
     {
         playerInput = GetComponentInParent<PlayerInput>();
-        interactAction = playerInput.actions.FindAction("Interaction");
+        playerSlots = GetComponentInParent<PlayerSlotManager>();
+
+        grabAction = playerInput.actions.FindAction("Interact");
+        releaseAction = playerInput.actions.FindAction("Release");
+
+        releaseAction.performed -= Release;
+        releaseAction.performed += Release;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -22,7 +35,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             Debug.Log("found " + other.name);
             latestInteract = interactable;
-            interactAction.performed += Interact;
+            grabAction.performed += Interact;
         }
     }
 
@@ -34,12 +47,20 @@ public class PlayerInteraction : MonoBehaviour
         {
             Debug.Log("ciao " + other.name);
             latestInteract = null;
-            interactAction.performed -= Interact;
+            grabAction.performed -= Interact;
         }
     }
 
     private void Interact(InputAction.CallbackContext ctx)
     {
         latestInteract.Interact();
+
+        if (latestInteract is Pickable pickable)
+            onTakeObject.Invoke(pickable);
+    }
+
+    private void Release(InputAction.CallbackContext ctx)
+    {
+        onReleaseObject.Invoke();
     }
 }

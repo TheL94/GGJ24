@@ -37,7 +37,6 @@ public class PlayerMovementBehaviour : MonoBehaviour
 
     PlayerInput playerInput;
     InputAction movement;
-    InputAction rotation;
 
     void Awake()
     {
@@ -48,7 +47,6 @@ public class PlayerMovementBehaviour : MonoBehaviour
     void Start()
     {
         movement = playerInput.actions.FindAction("Movement");
-        rotation = playerInput.actions.FindAction("Rotation");
 
         m_Grounded = true;
 
@@ -112,7 +110,6 @@ public class PlayerMovementBehaviour : MonoBehaviour
 #if UNITY_ANDROID
         float turnPlayer = (touchRotation.x / 20) * MouseSensitivity * androidMultiplier;
 #elif !UNITY_WEBGL || UNITY_EDITOR
-        float turnPlayer = (rotation.ReadValue<Vector2>().x / 20) * MouseSensitivity;
 #else
         float turnPlayer = 0;
         if(WebGL_Lib.IsWebMobile())
@@ -120,7 +117,6 @@ public class PlayerMovementBehaviour : MonoBehaviour
         else
             turnPlayer = (rotation.ReadValue<Vector2>().x / 20) * MouseSensitivity;
 #endif
-        m_HorizontalAngle = m_HorizontalAngle + turnPlayer;
 
 		if (m_HorizontalAngle > 360) m_HorizontalAngle -= 360.0f;
 		if (m_HorizontalAngle < 0) m_HorizontalAngle += 360.0f;
@@ -134,8 +130,7 @@ public class PlayerMovementBehaviour : MonoBehaviour
         var turnCam = -touchRotation.y / 20;
         turnCam = turnCam * MouseSensitivity * androidMultiplier;
 #elif !UNITY_WEBGL || UNITY_EDITOR
-        var turnCam = -rotation.ReadValue<Vector2>().y / 20;
-		turnCam = turnCam * MouseSensitivity;
+
 #else
         float turnCam = 0;
         if (WebGL_Lib.IsWebMobile())
@@ -149,7 +144,6 @@ public class PlayerMovementBehaviour : MonoBehaviour
             turnCam = turnCam * MouseSensitivity;
         }
 #endif
-        m_VerticalAngle = Mathf.Clamp(turnCam + m_VerticalAngle, -89.0f, 89.0f);
 		currentAngles = CameraPosition.transform.localEulerAngles;
 		currentAngles.x = m_VerticalAngle;
 		CameraPosition.transform.localEulerAngles = currentAngles;
