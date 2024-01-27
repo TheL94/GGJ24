@@ -24,7 +24,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Interaction",
+                    "name": "Grab",
                     "type": "Button",
                     "id": "a6303a9b-c5f1-4f23-8032-bd1ace352292",
                     "expectedControlType": "Button",
@@ -36,6 +36,15 @@
                     "name": "Smash",
                     "type": "Button",
                     "id": "ca83109b-1635-44d2-8513-d8237f7e6ea6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Release",
+                    "type": "Button",
+                    "id": "5cca6de0-f7c9-4770-acb0-1a476862bed5",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -182,7 +191,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interaction",
+                    "action": "Grab",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -194,6 +203,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Smash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "01be2707-8a29-4f11-881b-36d98ddd4003",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Release",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
