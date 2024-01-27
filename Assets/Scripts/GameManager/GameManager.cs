@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
         yield return null;
         //high score check
 
-        if (Points >= scores.highScores[0].Score)
+        if (Points >= scores.highScores[scores.highScores.Count-1].Score)
         {
             UIManager.Instance.highscoreInsertion.gameObject.SetActive(true);
             UIManager.Instance.finalScore.text = Points+"";
