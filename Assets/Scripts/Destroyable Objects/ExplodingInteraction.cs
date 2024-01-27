@@ -10,10 +10,4 @@ public class ExplodingInteraction : MonoBehaviour, IExplodable
         brokenVase.SetActive(true);
         gameObject.SetActive(false);
     }
-
-    //TO RREPLACE WITH INTERACTIONS WITH EXPLOSIONS/FORCE
-    private void OnMouseDown()
-    {
-        Break();
-    }
 }
