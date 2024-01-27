@@ -64,6 +64,11 @@ namespace SplitFace.ModularSpawnSystem
         /// </summary>
         public void StartSpawner()
         {
+            for (int i = 0; i < waves.Count; i++)
+            {
+                waves[i] = new Wave(waves[i]);
+            }
+
             currentWave = waves[0];
             currentWave.Initialize();
 
@@ -170,7 +175,6 @@ namespace SplitFace.ModularSpawnSystem
         private void OnUnitDeath(SpawnedUnit spawnedUnit)
         {
             activeUnits.Remove(spawnedUnit);
-            currentWave.unitsLeft--;
 
             usedSlots -= spawnedUnit.unitData.slotsOccupied;
 
@@ -189,7 +193,6 @@ namespace SplitFace.ModularSpawnSystem
         private void OnUnitEnabled(SpawnedUnit spawnedUnit)
         {
             activeUnits.Add(spawnedUnit);
-            currentWave.unitsLeft++;
 
             usedSlots += spawnedUnit.unitData.slotsOccupied;
         }

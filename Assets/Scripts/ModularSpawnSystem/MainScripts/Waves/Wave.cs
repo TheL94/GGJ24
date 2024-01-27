@@ -23,6 +23,16 @@ namespace SplitFace.ModularSpawnSystem
 
         private WaveUnit availablePrefab;
 
+        public Wave(Wave wave)
+        {
+            waveName = wave.waveName;
+            shuffleOnSpawn = wave.shuffleOnSpawn;
+            timeBeforeNextWave = wave.timeBeforeNextWave;
+            isInfinite = wave.isInfinite;
+
+            unitsToSpawn = wave.unitsToSpawn;
+        }
+
         /// <summary>
         /// Initializes the wave, resetting the count of enemies to spawn
         /// </summary>
@@ -54,6 +64,7 @@ namespace SplitFace.ModularSpawnSystem
                 if (shuffleOnSpawn)
                     unitsToSpawn.Shuffle();
 
+                unitsLeft--;
                 return (availablePrefab.slotsOccupied, availablePrefab.prefab);
             }
 
