@@ -127,25 +127,28 @@ namespace SplitFace.ModularSpawnSystem
         /// </summary>
         private void CleanUnitList()
         {
-            if (activeUnits.Count > 0)
-            {
-                foreach (SpawnedUnit unit in activeUnits)
-                {
-                    Destroy(unit.gameObject);
-                }
+            activeUnits = new List<SpawnedUnit>();
+            activeFodderUnits = new List<SpawnedUnit>();
 
-                activeUnits = new List<SpawnedUnit>();
-            }
+            //if (activeUnits.Count > 0)
+            //{
+            //    foreach (SpawnedUnit unit in activeUnits)
+            //    {
+            //        Destroy(unit.gameObject);
+            //    }
 
-            if (activeFodderUnits.Count > 0)
-            {
-                foreach (SpawnedUnit unit in activeFodderUnits)
-                {
-                    Destroy(unit.gameObject);
-                }
+            //    activeUnits = new List<SpawnedUnit>();
+            //}
 
-                activeFodderUnits = new List<SpawnedUnit>();
-            }
+            //if (activeFodderUnits.Count > 0)
+            //{
+            //    foreach (SpawnedUnit unit in activeFodderUnits)
+            //    {
+            //        Destroy(unit.gameObject);
+            //    }
+
+            //    activeFodderUnits = new List<SpawnedUnit>();
+            //}
         }
 
         /// <summary>
