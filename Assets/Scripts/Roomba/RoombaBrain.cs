@@ -10,7 +10,7 @@ public class RoombaBrain : MonoBehaviour
     public StateMachineBehaviour CurrentState { get; set; }
     public Animator Animator { get { if (animator == null) animator = GetComponent<Animator>(); return animator; } }
 
-    [SerializeField] private BumpCollider bumpCollider;
+    //[SerializeField] private BumpCollider bumpCollider;
 
     public float speed;
     public float turningSpeed;
@@ -43,6 +43,7 @@ public class RoombaBrain : MonoBehaviour
     private void Update()
     {
         Debug.DrawRay(transform.position, transform.forward, Color.red);
+        Debug.Log("Total Collisions: " + numberOfCollisions);
 
         transform.position += (transform.forward * currentSpeed * Time.deltaTime);
         transform.Rotate(transform.up * currentRotationSpeed * Time.deltaTime);
@@ -60,14 +61,6 @@ public class RoombaBrain : MonoBehaviour
     private void Init()
     {
         PlayerDetected = false;
-
-        Bumped = true;
-
-        //bumpCollider.OnTriggerEnterEvent -= CollisionEnterCallback;
-        //bumpCollider.OnTriggerEnterEvent += CollisionEnterCallback;
-
-        //bumpCollider.OnTriggerEnterEvent -= CollisionExitCallback;
-        //bumpCollider.OnTriggerEnterEvent += CollisionExitCallback;
     }
 
     public void StopMoving()
@@ -98,20 +91,14 @@ public class RoombaBrain : MonoBehaviour
         currentTargetRotationSpeed = Mathf.Sign(signedAngle) * targetSpeed;
     }
 
-    private void CollisionEnterCallback(Collider collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject == this)
-            return;
-
         numberOfCollisions++;
         Bumped = numberOfCollisions > 0;
     }
 
-    private void CollisionExitCallback(Collider collision)
+    private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject == this)
-            return;
-
         numberOfCollisions--;
         Bumped = numberOfCollisions > 0;
     }

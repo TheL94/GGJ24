@@ -8,6 +8,6 @@ public class RoombaReverseState : RoombaState
     {
         base.OnStateUpdate(animator, stateInfo, layerIndex);
 
-        brainInstance.MoveToRelative(brainInstance.transform.forward, brainInstance.speed / 2f);
+        brainInstance.MoveToRelative(brainInstance.transform.forward, -brainInstance.speed / 2f);
     }
 }

@@ -167,7 +167,7 @@ Transform:
   m_GameObject: {fileID: 7790307906722878746}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.69916254, y: 0.91, z: -2.66}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -336,6 +336,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: a7771bab-3d91-4f51-8c7b-dad18aa50683
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 09a37a52-6e09-4740-bbca-fbd0ce9293a1
+    m_ActionName: First_Person_Player/Jump[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: First_Person_Player
@@ -356,7 +360,10 @@ MonoBehaviour:
   abilityPermitted: 1
   MainCamera: {fileID: 469885262353857043}
   CameraPosition: {fileID: 3862296789492604836}
-  MouseSensitivity: 7.5
-  PlayerSpeed: 5
+  mouseSensitivity: 100
+  controllerRotationMultiplier: 2
+  playerSpeed: 5
   RunningSpeed: 7
-  JumpSpeed: 5
+  jumpSpeed: 5
+  pushPower: 2
+  gravityValue: 2
