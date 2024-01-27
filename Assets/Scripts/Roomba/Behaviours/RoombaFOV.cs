@@ -53,7 +53,7 @@ public class RoombaFOV : MonoBehaviour
 
         for (int i = 1; i < nRay / 2 + 1; i++)
         {
-            if (Physics.Raycast(transform.position, Quaternion.AngleAxis(angle * i, Vector3.up) * transform.forward, out hit, distance, ~0))
+            if (Physics.Raycast(transform.position, Quaternion.AngleAxis(angle * i, Vector3.up) * transform.forward, out hit, distance, mask))
             {
                 Debug.DrawRay(transform.position, Quaternion.AngleAxis(angle * i, Vector3.up) * transform.forward, Color.yellow);
                 return true;
