@@ -9,7 +9,7 @@ namespace SplitFace.ModularSpawnSystem
     [CreateAssetMenu(fileName = "New Wave", menuName = "WaveSpawner/New wave")]
     public class Wave : ScriptableObject
     {
-        public bool isWaveEmpty { get { return unitsLeft == 0; } }
+        public bool isWaveEmpty { get { return unitsLeft == 0 && !isInfinite; } }
         public WaveUnit AvailablePrefab { get { return availablePrefab; } }
 
         public string waveName = "New Wave";
