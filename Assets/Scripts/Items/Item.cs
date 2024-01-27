@@ -23,9 +23,17 @@ public class Item : MonoBehaviour
        coll = gameObject.GetComponentInChildren<Collider>();
     }
 
+
+    public void DestroyItem()
+    {
+        Debug.Log("destroyeed:" + gameObject.name);
+        Destroy(this.gameObject);
+    }
     // Update is called once per frame
     void Update()
     {
         
     }
+
+
 }

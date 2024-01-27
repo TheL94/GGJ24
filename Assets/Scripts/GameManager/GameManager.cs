@@ -67,12 +67,26 @@ public class GameManager : MonoBehaviour
         gamePhase = GamePhase.GAMESTART;
       //  enemySpawner.StartSpawner();
         bigItemSpawner.StartSpawner();
-       //  mediumItemSpawner.StartSpawner();
-       // smallItemSPawner.StartSpawner();
+        mediumItemSpawner.StartSpawner();
+        smallItemSPawner.StartSpawner();
         Debug.Log("staerted spawning");
         yield return null;
         gamePhase = GamePhase.PLAYNG;
         Debug.Log("game stared!!");
 
     }
+}
+
+
+[System.Serializable]
+public class HighScore
+{
+   public string Name;
+   public int Score;
+}
+
+[System.Serializable]
+public class Scores
+{
+    public List<HighScore> highScores; 
 }

@@ -12,8 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8f717fa89ceae24c82cdb7b0458b5e8, type: 3}
   m_Name: BigItemWave
   m_EditorClassIdentifier: 
-  waveName: New Wave
+  waveName: BigItem
   shuffleOnSpawn: 1
-  isInfinite: 0
-  unitsToSpawn: []
+  isInfinite: 1
+  unitsToSpawn:
+  - prefab: {fileID: 1375283401255481633, guid: 239b0e0acbc065b4faf0c5440089b04f,
+      type: 3}
+    unitName: 
+    slotsOccupied: 1
+    count: 1
+    amountToSpawn: 1
+  - prefab: {fileID: 2857410317103837608, guid: e0612de9a9e28de40820ed852f9b0b08,
+      type: 3}
+    unitName: 
+    slotsOccupied: 1
+    count: 1
+    amountToSpawn: 1
+  - prefab: {fileID: 2458396268977265407, guid: 63962bbbb7617bf4f854bccf37146e75,
+      type: 3}
+    unitName: 
+    slotsOccupied: 1
+    count: 1
+    amountToSpawn: 1
   unitsLeft: 0
