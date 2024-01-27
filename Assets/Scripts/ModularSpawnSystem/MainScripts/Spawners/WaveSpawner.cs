@@ -46,6 +46,9 @@ namespace SplitFace.ModularSpawnSystem
             }
         }
 
+        public int CurrentWaveIndex { get => waves.IndexOf(currentWave); }
+        public int WavesCount { get => waves.Count; }
+
         #endregion
 
         private int usedSlots = 0;
@@ -94,13 +97,16 @@ namespace SplitFace.ModularSpawnSystem
         /// <summary>
         /// Switches to the next wave, if it's available
         /// </summary>
-        private void SwitchWave()
+        public void SwitchWave()
         {
-            int waveIndex = waves.IndexOf(currentWave) + 1;
+            SwitchWave(waves.IndexOf(currentWave) + 1);
+        }
 
-            if (waveIndex < waves.Count && waves[waveIndex] != null)
+        public void SwitchWave(int index)
+        {
+            if (index < waves.Count && waves[index] != null)
             {
-                currentWave = waves[waveIndex];
+                currentWave = waves[index];
                 currentWave.Initialize();
 
                 StartAsyncSpawn();
@@ -277,8 +283,11 @@ namespace SplitFace.ModularSpawnSystem
 
         IEnumerator SpawnFodderUnits()
         {
-            while (enableFodderUnits)
+            while (true)
             {
+                if (!enableFodderUnits)
+                    yield return new WaitForSeconds(spawnDelay);
+
                 #region FODDER UNITS
 
                 int slotsToFill = maxFodderSlots - usedFodderSlots;
