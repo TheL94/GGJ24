@@ -48,14 +48,14 @@ public class RoombaFOV : MonoBehaviour
     {
         float angle = rightSide ? RayDegree : -RayDegree;
 
-        if (ShootStraightRay(out hit, mask))
+        if (ShootStraightRay(out hit, ~0) && mask == (mask | (1 << hit.transform.gameObject.layer)))
             return true;
 
         for (int i = 1; i < nRay / 2 + 1; i++)
         {
-            if (Physics.Raycast(transform.position, Quaternion.AngleAxis(angle * i, Vector3.up) * transform.forward, out hit, distance, mask))
+            if (Physics.Raycast(transform.position, Quaternion.AngleAxis(angle * i, Vector3.up) * transform.forward, out hit, distance, ~0)
+                && mask == (mask | (1 << hit.transform.gameObject.layer)))
             {
-                Debug.DrawRay(transform.position, Quaternion.AngleAxis(angle * i, Vector3.up) * transform.forward, Color.yellow);
                 return true;
             }
             else
