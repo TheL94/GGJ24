@@ -60,10 +60,11 @@ public class PlayerPhysicMovement : MonoBehaviour
     {
         if (!isActiveAndEnabled)
             return;
-
-        moveInput = movement.ReadValue<Vector2>();
+        
         moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
-
+        // FIX
+        // transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, currentTime / lerpTime);
+        
         Move();
         CheckCurrentRotation();
     }
@@ -82,7 +83,7 @@ public class PlayerPhysicMovement : MonoBehaviour
             m_delayedRotationRoutine = StartCoroutine(SlerpRotation(moveInput, moveDirection));
         }
     }
-    
+
     void RunPerformed(InputAction.CallbackContext ctx)
     {
         runIsPressed = true;
@@ -103,13 +104,13 @@ public class PlayerPhysicMovement : MonoBehaviour
         if (!movementIsPressed)
         {
             movementIsPressed = true;
-            
+
             moveInput = movement.ReadValue<Vector2>();
             moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
             m_delayedRotationRoutine = StartCoroutine(SlerpRotation(moveInput, moveDirection));
         }
     }
-    
+
     void MovementCanceled(InputAction.CallbackContext ctx)
     {
         movementIsPressed = false;
@@ -126,7 +127,8 @@ public class PlayerPhysicMovement : MonoBehaviour
 
     IEnumerator SlerpRotation(Vector2 inputVector, Vector3 moveDir3)
     {
-        float timeCount = 0;
+        float lerpTime = rotationTime;
+        float currentTime = 0;
         var wait = new WaitForEndOfFrame();
 
         do
@@ -135,9 +137,9 @@ public class PlayerPhysicMovement : MonoBehaviour
             // moveDir3 = new Vector3(inputVector.x, 0, inputVector.y);
 
             var lookRotation = Quaternion.LookRotation(moveDir3.normalized, Vector3.up);
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, timeCount);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, currentTime / lerpTime);
 
-            timeCount += Time.deltaTime * rotationTime;
+            currentTime += Time.deltaTime;
             yield return wait;
         } while (Vector3.Angle(transform.forward, moveDir3.normalized) > angleThreshold);
 
