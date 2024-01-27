@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class RoombaBrain : MonoBehaviour
 {
-    public bool PlayerDetected { get => playerDetected; set { Animator.SetBool("PlayerDetected", value); playerDetected = value; } }
+    public bool TargetDetected { get => targetDetected; set { Animator.SetBool("TargetDetected", value); targetDetected = value; } }
     public bool Bumped { get => bumped; set { Animator.SetBool("Bumped", value); bumped = value; } }
-    public PlayerMovementBehaviour Player { get; private set; }
+    public Transform Target { get; private set; }
     public StateMachineBehaviour CurrentState { get; set; }
     public Animator Animator { get { if (animator == null) animator = GetComponent<Animator>(); return animator; } }
 
@@ -30,7 +30,7 @@ public class RoombaBrain : MonoBehaviour
     private float currentTargetSpeed;
     private float currentTargetRotationSpeed;
 
-    private bool playerDetected;
+    private bool targetDetected;
     private bool bumped;
 
     private int numberOfCollisions = 0;
@@ -38,7 +38,7 @@ public class RoombaBrain : MonoBehaviour
     private void Start()
     {
         ///TEST
-        Player = FindAnyObjectByType<PlayerMovementBehaviour>();
+        Target = FindAnyObjectByType<PlayerMovementBehaviour>().transform;
         ///
         Init();
     }
@@ -63,16 +63,17 @@ public class RoombaBrain : MonoBehaviour
 
     private void Init()
     {
-        PlayerDetected = false;
+        TargetDetected = false;
         Bumped = false;
 
         //playerRoombaFov = GetComponent<RoombaFOV>();
     }
 
-    public void SearchForPlayer()
+    public void SearchForTarget()
     {
-        PlayerDetected = playerRoombaFov.FindObject(playerLayerMask, out RaycastHit hit) &&
-            hit.collider.gameObject.TryGetComponent<PlayerMovementBehaviour>(out PlayerMovementBehaviour playerMovementBehaviour);
+        TargetDetected = playerRoombaFov.FindObject(playerLayerMask, out RaycastHit hit);
+
+        Target = hit.transform;
     }
 
     public void StopMoving()
