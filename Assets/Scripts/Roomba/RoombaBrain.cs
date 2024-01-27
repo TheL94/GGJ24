@@ -65,8 +65,11 @@ public class RoombaBrain : MonoBehaviour
 
     public void StopMoving()
     {
-        currentTargetSpeed = 0;
+        currentSpeed = 0;
         currentRotationSpeed = 0;
+
+        currentTargetSpeed = 0;
+        currentTargetRotationSpeed = 0;
     }
 
     public void MoveToRelative(Vector3 targetDirection, float targetSpeed)
