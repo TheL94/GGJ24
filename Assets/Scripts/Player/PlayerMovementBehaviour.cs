@@ -87,7 +87,7 @@ public class PlayerMovementBehaviour : MonoBehaviour
         moveVelocity.y = jumpSpeed;
     }
 
-    bool CheckGrounded()
+    void CheckGrounded()
     {
         //we define our own grounded and not use the Character controller one as the character controller can flicker
         //between grounded/not grounded on small step and the like. So we actually make the controller "not grounded" only
@@ -106,8 +106,6 @@ public class PlayerMovementBehaviour : MonoBehaviour
             m_GroundedTimer = 0.0f;
             m_Grounded = true;
         }
-
-        return m_Grounded;
     }
 
     void Move()
