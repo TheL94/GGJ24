@@ -7,7 +7,7 @@ public class PlayerInteraction : MonoBehaviour
     private PlayerInput playerInput;
     private PlayerSlotManager playerSlots;
 
-    private InputAction grabAction;
+    private InputAction interactAction;
     private InputAction releaseAction;
 
     private IInteractable latestInteract;
@@ -20,7 +20,7 @@ public class PlayerInteraction : MonoBehaviour
         playerInput = GetComponentInParent<PlayerInput>();
         playerSlots = GetComponentInParent<PlayerSlotManager>();
 
-        grabAction = playerInput.actions.FindAction("Interact");
+        interactAction = playerInput.actions.FindAction("Interact");
         releaseAction = playerInput.actions.FindAction("Release");
 
         releaseAction.performed -= Release;
@@ -35,7 +35,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             Debug.Log("found " + other.name);
             latestInteract = interactable;
-            grabAction.performed += Interact;
+            interactAction.performed += Interact;
         }
     }
 
@@ -47,7 +47,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             Debug.Log("ciao " + other.name);
             latestInteract = null;
-            grabAction.performed -= Interact;
+            interactAction.performed -= Interact;
         }
     }
 

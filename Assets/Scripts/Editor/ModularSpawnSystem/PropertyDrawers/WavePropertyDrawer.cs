@@ -26,6 +26,7 @@ namespace SplitFace.ModularSpawnSystem.SpawnSystemEditor
             EditorGUI.BeginProperty(position, label, property);
 
             var shuffleOnSpawn = assetObject.FindProperty("shuffleOnSpawn");
+            var timeBeforeNextWave = assetObject.FindProperty("timeBeforeNextWave");
             var isInfinite = assetObject.FindProperty("isInfinite");
             var waveName = assetObject.FindProperty("waveName");
 
@@ -59,6 +60,16 @@ namespace SplitFace.ModularSpawnSystem.SpawnSystemEditor
 
             position.y += EditorGUIUtility.singleLineHeight;
 
+            timeBeforeNextWave.floatValue = EditorGUI.FloatField(new Rect(
+                position.x,
+                position.y,
+                position.width / 2 - 5,
+                EditorGUIUtility.singleLineHeight),
+                new GUIContent("Next wave timer", "Leave 0 to ignore this"),
+                timeBeforeNextWave.floatValue);
+
+            position.y += EditorGUIUtility.singleLineHeight;
+
             isInfinite.boolValue = GUI.Toggle(new Rect(
                 position.x,
                 position.y,
@@ -85,7 +96,7 @@ namespace SplitFace.ModularSpawnSystem.SpawnSystemEditor
             var assetObject = new SerializedObject(property.objectReferenceValue);
             var unitsList = assetObject.FindProperty("unitsToSpawn");
 
-            return editToggle ? EditorGUI.GetPropertyHeight(unitsList) + 5f * EditorGUIUtility.singleLineHeight : (EditorGUIUtility.singleLineHeight + 2f) * 2f;
+            return editToggle ? EditorGUI.GetPropertyHeight(unitsList) + 6f * EditorGUIUtility.singleLineHeight : (EditorGUIUtility.singleLineHeight + 2f) * 2f;
         }
     }
 }
