@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Entity : MonoBehaviour, IInteractable
+public class Pickable : MonoBehaviour, IInteractable
 {
+    [Range(1f, 3f)]
+    public int weight;
+
+    public bool picked;
+
     public void Interact()
     {
         Debug.Log("interacted with " + name);

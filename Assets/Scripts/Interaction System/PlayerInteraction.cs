@@ -1,17 +1,30 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerInteraction : MonoBehaviour
 {
     private PlayerInput playerInput;
+    private PlayerSlotManager playerSlots;
+
     private InputAction interactAction;
+    private InputAction releaseAction;
 
     private IInteractable latestInteract;
+
+    public static UnityAction<Pickable> onTakeObject;
+    public static UnityAction onReleaseObject;
 
     private void Start()
     {
         playerInput = GetComponentInParent<PlayerInput>();
-        interactAction = playerInput.actions.FindAction("Interaction");
+        playerSlots = GetComponentInParent<PlayerSlotManager>();
+
+        interactAction = playerInput.actions.FindAction("Interact");
+        releaseAction = playerInput.actions.FindAction("Release");
+
+        releaseAction.performed -= Release;
+        releaseAction.performed += Release;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -41,5 +54,13 @@ public class PlayerInteraction : MonoBehaviour
     private void Interact(InputAction.CallbackContext ctx)
     {
         latestInteract.Interact();
+
+        if (latestInteract is Pickable pickable)
+            onTakeObject.Invoke(pickable);
+    }
+
+    private void Release(InputAction.CallbackContext ctx)
+    {
+        onReleaseObject.Invoke();
     }
 }
