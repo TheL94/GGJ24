@@ -8,23 +8,14 @@ public class Damage : MonoBehaviour, IDamageable
 
     public Action<int> OnDamaged { get; set; }
 
-    public float Vulnerability
-    {
-        get
-        {
-            return m_CurrentVulnerability;
-        }
-    }
+    public float Vulnerability { get => m_CurrentVulnerability; }
+
+    public int Health { get => m_CurrentHealth; }
+
+    public int MaxHealth { get => startingHealth; }
 
     public int startingHealth = 3;
-    float m_CurrentHealth;
-    public float Health
-    {
-        get
-        {
-            return m_CurrentHealth;
-        }
-    }
+    int m_CurrentHealth;
 
     private void Awake()
     {

@@ -6,7 +6,8 @@ using System;
 public interface IDamageable
 {
     Action<int> OnDamaged { get; set; }
-    float Health { get; }
+    int Health { get; }
+    int MaxHealth { get; }
     float Vulnerability { get; }
     void Damage(int damage);
 }
