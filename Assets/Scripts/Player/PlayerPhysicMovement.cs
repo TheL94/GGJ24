@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using DG.Tweening;
@@ -14,9 +15,13 @@ public class PlayerPhysicMovement : MonoBehaviour
     public float rotationTime = 0.5f;
     public float maxSpeed;
 
+    [SerializeField] private List<GameObject> raccoons;
+    [SerializeField] private List<Transform> raccoonsPositions;
+
     [SerializeField] private GameObject deadRaccoonPrefab;
     [SerializeField] private Transform deadRaccoonSpawnPosition;
     [SerializeField] private float ragdollAmount;
+
     [Space] public float angleThreshold = .1f;
 
     Rigidbody m_rigidbody;
@@ -120,6 +125,8 @@ public class PlayerPhysicMovement : MonoBehaviour
         GameObject spawnedRaccoon = Instantiate(deadRaccoonPrefab, deadRaccoonSpawnPosition.position, deadRaccoonSpawnPosition.rotation);
 
         spawnedRaccoon.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-ragdollAmount, ragdollAmount), Random.Range(-ragdollAmount, ragdollAmount)));
+
+        StartCoroutine(RaccoonPositioning(damageable.Health));
     }
 
     void Move()
@@ -133,6 +140,50 @@ public class PlayerPhysicMovement : MonoBehaviour
 
         Vector3 moveVelocity = move * (moveSpeed * Time.deltaTime);
         m_rigidbody.MovePosition(transform.position + moveVelocity);
+    }
 
+    IEnumerator RaccoonPositioning(int currentLife)
+    {
+        float elapsedTime = 0f;
+        float lerpTime = 1f;
+
+        Stack<GameObject> currentRaccoons = new Stack<GameObject>(raccoons);
+        Stack<Transform> currentPoints = new Stack<Transform>(raccoonsPositions);
+
+        Dictionary<GameObject, Transform> raccoonPositionPair = new Dictionary<GameObject, Transform>();
+        Dictionary<GameObject, (Vector3, Quaternion)> raccoonPreviousPositionPair = new Dictionary<GameObject, (Vector3, Quaternion)>();
+
+        for (int i = damageable.MaxHealth; i < currentLife; i++)
+        {
+            GameObject raccoon = currentRaccoons.Pop();
+            raccoon.SetActive(false);
+        }
+
+        List<GameObject> activeRaccoons = new List<GameObject>(currentRaccoons);
+
+        for (int i = 0; i < currentRaccoons.Count; i++)
+        {
+            GameObject raccoon = currentRaccoons.Pop();
+            raccoon.SetActive(true);
+
+            raccoonPositionPair.Add(raccoon, currentPoints.Pop());
+            raccoonPreviousPositionPair.Add(raccoon, (raccoon.transform.localPosition, raccoon.transform.localRotation));
+        }
+
+        while (elapsedTime <= lerpTime)
+        {
+            foreach (GameObject raccoon in activeRaccoons)
+            {
+                Transform target = raccoonPositionPair[raccoon];
+                (Vector3, Quaternion) previousValues = raccoonPreviousPositionPair[raccoon];
+
+                transform.localPosition = Vector3.Lerp(previousValues.Item1, target.localPosition, elapsedTime / lerpTime);
+                transform.localRotation = Quaternion.Slerp(previousValues.Item2, target.localRotation, elapsedTime / lerpTime);
+            }
+
+            elapsedTime += Time.deltaTime;
+
+            yield return new WaitForEndOfFrame();
+        }
     }
 }
