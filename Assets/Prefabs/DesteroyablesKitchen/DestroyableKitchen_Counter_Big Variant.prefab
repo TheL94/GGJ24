@@ -298,6 +298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brokenVase: {fileID: 0}
+  probability: 30
 --- !u!65 &9188428402771235764
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -317,8 +318,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5000024, y: 0.7932884, z: 1.2003475}
-  m_Center: {x: -0.7500011, y: -0.3966441, z: 0.59215754}
+  m_Size: {x: 1.5000024, y: 0.7932884, z: 1.0916421}
+  m_Center: {x: -0.7500011, y: -0.3966441, z: 0.53780484}
 --- !u!4 &3226362184615251011 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1348513468924935887, guid: e1b311773db15494bb77ae3b76382b46,

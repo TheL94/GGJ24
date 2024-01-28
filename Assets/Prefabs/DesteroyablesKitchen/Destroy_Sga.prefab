@@ -63,6 +63,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Broken
       objectReference: {fileID: 0}
+    - target: {fileID: 5548744966712550440, guid: 3978a84c4716b5c46ac847ba268b238d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -403,7 +408,7 @@ PrefabInstance:
     - target: {fileID: 6852278273813247876, guid: 73cbf503fa376864593db57f077f0aca,
         type: 3}
       propertyPath: m_Name
-      value: Destroy_Sgabello 1
+      value: Destroy_Sga
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
