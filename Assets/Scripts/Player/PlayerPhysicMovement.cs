@@ -16,7 +16,7 @@ public class PlayerPhysicMovement : MonoBehaviour
     {
         get => new Vector3(mainCamera.transform.right.x, 0, mainCamera.transform.right.z);
     }
-    
+
     public UnityAction<GameObject> OnBottonRacoonChange;
 
     private GameObject bottomRacoon;
@@ -75,7 +75,7 @@ public class PlayerPhysicMovement : MonoBehaviour
         animationController = GetComponentInChildren<PlayerAnimationController>();
 
         damageable.OnDamaged += OnDamaged;
-        damageable.OnHealed += OnDamaged;
+        damageable.OnHealed += OnHealed;
         mainCamera = Camera.main;
     }
 
@@ -142,7 +142,12 @@ public class PlayerPhysicMovement : MonoBehaviour
         spawnedRaccoon.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-ragdollAmount, ragdollAmount),
             Random.Range(-ragdollAmount, ragdollAmount)));
 
-        //StartCoroutine(RaccoonPositioning(damageable.Health));
+        StartCoroutine(RaccoonPositioning(damageable.Health));
+    }
+
+    void OnHealed(int heal)
+    {
+        StartCoroutine(RaccoonPositioning(damageable.Health));
     }
 
     void Move()
@@ -153,8 +158,8 @@ public class PlayerPhysicMovement : MonoBehaviour
 
         // if (runIsPressed)
         //     moveSpeed *= runMultiplier;
-        
-        if(moveInput.magnitude > 0.1f)
+
+        if (moveInput.magnitude > 0.1f)
             animationController?.SetRun();
         else
             animationController?.SetIdle();
@@ -175,7 +180,7 @@ public class PlayerPhysicMovement : MonoBehaviour
         Dictionary<GameObject, (Vector3, Quaternion)> raccoonPreviousPositionPair =
             new Dictionary<GameObject, (Vector3, Quaternion)>();
 
-        for (int i = damageable.MaxHealth; i < currentLife; i++)
+        for (int i = damageable.MaxHealth; i > currentLife; i--)
         {
             GameObject raccoon = currentRaccoons.Pop();
             raccoon.SetActive(false);
@@ -195,22 +200,24 @@ public class PlayerPhysicMovement : MonoBehaviour
                 (raccoon.transform.localPosition, raccoon.transform.localRotation));
         }
 
-        while (elapsedTime <= lerpTime)
-        {
-            foreach (GameObject raccoon in activeRaccoons)
-            {
-                Transform target = raccoonPositionPair[raccoon];
-                (Vector3, Quaternion) previousValues = raccoonPreviousPositionPair[raccoon];
+        //while (elapsedTime <= lerpTime)
+        //{
+        //    foreach (GameObject raccoon in activeRaccoons)
+        //    {
+        //        Transform target = raccoonPositionPair[raccoon];
+        //        (Vector3, Quaternion) previousValues = raccoonPreviousPositionPair[raccoon];
 
-                transform.localPosition =
-                    Vector3.Lerp(previousValues.Item1, target.localPosition, elapsedTime / lerpTime);
-                transform.localRotation =
-                    Quaternion.Slerp(previousValues.Item2, target.localRotation, elapsedTime / lerpTime);
-            }
+        //        transform.localPosition =
+        //            Vector3.Lerp(previousValues.Item1, target.localPosition, elapsedTime / lerpTime);
+        //        transform.localRotation =
+        //            Quaternion.Slerp(previousValues.Item2, target.localRotation, elapsedTime / lerpTime);
+        //    }
 
-            elapsedTime += Time.deltaTime;
+        //    elapsedTime += Time.deltaTime;
 
-            yield return new WaitForEndOfFrame();
-        }
+        //    yield return new WaitForEndOfFrame();
+        //}
+
+        yield return new WaitForEndOfFrame();
     }
 }

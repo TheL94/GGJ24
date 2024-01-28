@@ -45,7 +45,10 @@ public class Damage : MonoBehaviour, IDamageable
     public void Heal(int heal)
     {
         if (m_CurrentHealth < MaxHealth)
+        {
             m_CurrentHealth += heal;
+            OnHealed?.Invoke(heal);
+        }
     }
 
     private void Update()
