@@ -65,7 +65,6 @@ public class SmashButton : MonoBehaviour
             {
                 Debug.Log("Hai vinto");
                 onSmeshWin?.Invoke();
-                smashAction.performed -= OnButtonPress;
                 isSmeshActive = false;
                 countdownCoroutine = null;
                 yield break;
@@ -73,7 +72,6 @@ public class SmashButton : MonoBehaviour
             if (fillAmount <= 0.02f)
             {
                 onSmeshLose?.Invoke();
-                smashAction.performed -= OnButtonPress;
                 Debug.Log("Hai perso");
                 isSmeshActive = false;
                 countdownCoroutine = null;
@@ -82,5 +80,11 @@ public class SmashButton : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    public void ResetState()
+    {
+        fillAmount = startFillAmount;
+        updateFillAmount?.Invoke(fillAmount);
     }
 }
