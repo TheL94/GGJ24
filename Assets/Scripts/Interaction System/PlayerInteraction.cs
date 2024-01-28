@@ -19,6 +19,8 @@ public class PlayerInteraction : MonoBehaviour
 
     public GameObject interactionCanvas;
 
+    public LayerMask itemMask;
+
     private void Start()
     {
         playerInput = GetComponentInParent<PlayerInput>();
@@ -42,16 +44,18 @@ public class PlayerInteraction : MonoBehaviour
             if (latestInteract is Item item)
             {
                 interactionCanvas.SetActive(true);
-                interactionCanvas.transform.position = new Vector3(item.transform.position.x,
-                                                                    1000f,
-                                                                    item.transform.position.z);
-                Physics.Raycast(new Ray(interactionCanvas.transform.position, Vector3.down), out RaycastHit hit, Mathf.Infinity);
-
-                interactionCanvas.transform.position = new Vector3(item.transform.position.x,
-                                                                    hit.point.y + 0.05f,
-                                                                    item.transform.position.z);
-
+                interactionCanvas.transform.position = new Vector3(item.transform.position.x, 1000f, item.transform.position.z);
+                Physics.Raycast(new Ray(interactionCanvas.transform.position, Vector3.down), out RaycastHit hit, Mathf.Infinity, itemMask);
+                interactionCanvas.transform.position = new Vector3(item.transform.position.x, hit.point.y + 0.05f, item.transform.position.z);
                 interactionCanvas.transform.rotation = item.transform.rotation;
+            }
+            else if (latestInteract is SmashInteraction item2)
+            {
+                interactionCanvas.SetActive(true);
+                interactionCanvas.transform.position = new Vector3(item2.transform.position.x, 1000f, item2.transform.position.z);
+                Physics.Raycast(new Ray(interactionCanvas.transform.position, Vector3.down), out RaycastHit hit, Mathf.Infinity, itemMask);
+                interactionCanvas.transform.position = new Vector3(item2.transform.position.x, hit.point.y + 0.05f, item2.transform.position.z);
+                interactionCanvas.transform.rotation = item2.transform.rotation;
             }
 
             interactAction.performed += Interact;
@@ -73,6 +77,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Interact(InputAction.CallbackContext ctx)
     {
+        interactionCanvas.SetActive(false);
         interactAction.performed -= Interact;
         latestInteract.Interact();
 
