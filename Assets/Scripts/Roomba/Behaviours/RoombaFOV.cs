@@ -7,13 +7,14 @@ public class RoombaFOV : MonoBehaviour
     public int nRay;
     public float degrees;
     public float distance;
+    public Transform shootingPoint;
 
     private bool ShootStraightRay(out RaycastHit hit, LayerMask mask)
     {
         hit = new RaycastHit();
 
         if (nRay % 2 != 0)
-            return Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, distance, mask);
+            return Physics.Raycast(shootingPoint.position, transform.TransformDirection(Vector3.forward), out hit, distance, mask);
         else
             return false;
     }
@@ -27,13 +28,13 @@ public class RoombaFOV : MonoBehaviour
 
         for (int i = 1; i < nRay / 2 + 1; i++)
         {
-            if (Physics.Raycast(transform.position, Quaternion.AngleAxis(angle * i, Vector3.up) * transform.forward, out hit, distance, ~0))
+            if (Physics.Raycast(shootingPoint.position, Quaternion.AngleAxis(angle * i, Vector3.up) * transform.forward, out hit, distance, ~0))
             {
-                Debug.DrawRay(transform.position, Quaternion.AngleAxis(angle * i, Vector3.up) * transform.forward, Color.yellow);
+                Debug.DrawRay(shootingPoint.position, Quaternion.AngleAxis(angle * i, Vector3.up) * transform.forward, Color.yellow);
                 hits++;
             }
             else
-                Debug.DrawRay(transform.position, Quaternion.AngleAxis(angle * i, Vector3.up) * transform.forward * distance, Color.magenta);
+                Debug.DrawRay(shootingPoint.position, Quaternion.AngleAxis(angle * i, Vector3.up) * transform.forward * distance, Color.magenta);
         }
 
         return hits;
@@ -53,13 +54,13 @@ public class RoombaFOV : MonoBehaviour
 
         for (int i = 1; i < nRay / 2 + 1; i++)
         {
-            if (Physics.Raycast(transform.position, Quaternion.AngleAxis(angle * i, Vector3.up) * transform.forward, out hit, distance, ~0)
+            if (Physics.Raycast(shootingPoint.position, Quaternion.AngleAxis(angle * i, Vector3.up) * transform.forward, out hit, distance, ~0)
                 && mask == (mask | (1 << hit.transform.gameObject.layer)))
             {
                 return true;
             }
             else
-                Debug.DrawRay(transform.position, Quaternion.AngleAxis(angle * i, Vector3.up) * transform.forward * distance, Color.magenta);
+                Debug.DrawRay(shootingPoint.position, Quaternion.AngleAxis(angle * i, Vector3.up) * transform.forward * distance, Color.magenta);
         }
         return false;
     }

@@ -1,18 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class SelfDestruct : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private VisualEffect explosionVFX;
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] private float explosionRadius;
+    [SerializeField] private float explosionForce;
+
+    private void OnCollisionEnter(Collision collision)
     {
-        
+        if (collision.transform.GetComponent<IDamageable>() is IDamageable damageable)
+        {
+            explosionVFX.transform.parent = null;
+            explosionVFX.Play();
+
+            damageable.Damage(1);
+
+            Vector3 explosionPos = transform.position;
+            Collider[] colliders = Physics.OverlapSphere(explosionPos, explosionRadius);
+            foreach (Collider hit in colliders)
+            {
+                Rigidbody rb = hit.GetComponent<Rigidbody>();
+
+                if (rb != null)
+                    rb.AddExplosionForce(explosionForce, explosionPos, explosionRadius, 3.0f);
+            }
+
+            Destroy(this);
+        }
     }
 }
