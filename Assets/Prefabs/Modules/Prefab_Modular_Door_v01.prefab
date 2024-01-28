@@ -81,7 +81,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e78493a684e8ad74283bd4f019e8e581,
         type: 3}
       propertyPath: m_Name
-      value: Mesh_Modular_Door
+      value: Prefab_Modular_Door_v01
       objectReference: {fileID: 0}
     - target: {fileID: 5836835867620784353, guid: e78493a684e8ad74283bd4f019e8e581,
         type: 3}
@@ -91,5 +91,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7482842944957708661, guid: e78493a684e8ad74283bd4f019e8e581,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2586290752016279987}
   m_SourcePrefab: {fileID: 100100000, guid: e78493a684e8ad74283bd4f019e8e581, type: 3}
+--- !u!1 &6432523476896097432 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7482842944957708661, guid: e78493a684e8ad74283bd4f019e8e581,
+    type: 3}
+  m_PrefabInstance: {fileID: 4511634885424537069}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2586290752016279987
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6432523476896097432}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.6176581, y: 0.14353561, z: 2.2999995}
+  m_Center: {x: -0.80882907, y: 0, z: 1.1499997}

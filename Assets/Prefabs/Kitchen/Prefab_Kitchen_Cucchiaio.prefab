@@ -66,10 +66,72 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 152a502b02bc8644ab883a700c9008f0,
         type: 3}
       propertyPath: m_Name
-      value: Mesh_Kitchen_Cucchiaio
+      value: Prefab_Kitchen_Cucchiaio
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 152a502b02bc8644ab883a700c9008f0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -5573116470255708614}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 152a502b02bc8644ab883a700c9008f0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -8736715157287341567}
   m_SourcePrefab: {fileID: 100100000, guid: 152a502b02bc8644ab883a700c9008f0, type: 3}
+--- !u!1 &3328462726117464003 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 152a502b02bc8644ab883a700c9008f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 2517647324295015058}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &-5573116470255708614
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3328462726117464003}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &-8736715157287341567
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3328462726117464003}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.066250846, y: 0.25106755, z: 0.014276446}
+  m_Center: {x: 0.0000071302056, y: -0.06303227, z: -0.010167816}

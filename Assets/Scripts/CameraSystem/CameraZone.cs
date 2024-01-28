@@ -31,6 +31,14 @@ public class CameraZone : MonoBehaviour
         {
             OnPlayerEnter?.Invoke(this, player.gameObject);
         }
+        else
+        {
+            player = other.GetComponentInParent<PlayerInput>();
+            if (player)
+            {
+                OnPlayerEnter?.Invoke(this, player.gameObject);
+            }
+        }
     }
 
     private void OnTriggerExit(Collider other)
