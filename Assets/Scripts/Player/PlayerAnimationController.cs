@@ -35,20 +35,9 @@ public class PlayerAnimationController : MonoBehaviour
 
     public void SetIdle()
     {
+        if (activeBottomRacoon == null)
+            activeBottomRacoon = bottonRaccon;
         if (!activeBottomRacoon.GetCurrentAnimatorStateInfo(0).IsName("GoToIdle"))
             activeBottomRacoon.SetTrigger("GoToIdle");
-    }
-
-    public void SetPickUp()
-    {
-        if (activeBottomRacoon != bottonRaccon)
-        {
-            topRaccon.SetTrigger("GoToPickUp");
-            middleRaccon.SetTrigger("GoToPickUp");
-        }
-        else
-        {
-            activeBottomRacoon.SetTrigger("GoToPickUp");
-        }
     }
 }

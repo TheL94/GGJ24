@@ -6,6 +6,9 @@ public class Fridge : Item
 {
     private void OnDestroy()
     {
-        UIManager.Instance.stealTheFridge.gameObject.SetActive(false);
+        if (UIManager.Instance)
+        {
+            UIManager.Instance.stealTheFridge.gameObject.SetActive(false);
+        }
     }
 }
