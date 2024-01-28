@@ -71,10 +71,72 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: fdcaaca7ece9e59408f8e2768f097a45,
         type: 3}
       propertyPath: m_Name
-      value: Mesh_Vaso_1
+      value: Prefab_Vaso_1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fdcaaca7ece9e59408f8e2768f097a45,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -4498891327948330413}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fdcaaca7ece9e59408f8e2768f097a45,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1714679090136097088}
   m_SourcePrefab: {fileID: 100100000, guid: fdcaaca7ece9e59408f8e2768f097a45, type: 3}
+--- !u!1 &328725952189683161 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fdcaaca7ece9e59408f8e2768f097a45,
+    type: 3}
+  m_PrefabInstance: {fileID: 598617367273728136}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &-4498891327948330413
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328725952189683161}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.3440685, y: 2.1252244, z: 1.0585365}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1714679090136097088
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328725952189683161}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
