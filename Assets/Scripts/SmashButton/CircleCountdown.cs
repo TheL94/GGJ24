@@ -7,8 +7,6 @@ public class CircleCountdown : MonoBehaviour
     Image smeshSprite;
     public Image pressSprite;
 
-    Coroutine showPressSpriteCoroutine;
-
     private void Start()
     {
         smeshSprite = GetComponent<Image>();
@@ -20,21 +18,5 @@ public class CircleCountdown : MonoBehaviour
     public void UpdateFillAmount(float f)
     {
         smeshSprite.fillAmount = f;
-    }
-
-    public void PressSprite()
-    {
-        if (showPressSpriteCoroutine == null)
-            showPressSpriteCoroutine = StartCoroutine(ShowPressSprite());
-    }
-
-    IEnumerator ShowPressSprite()
-    {
-        pressSprite.gameObject.SetActive(true);
-        yield return new WaitForSeconds(0.05f);
-        pressSprite.gameObject.SetActive(false);
-
-        showPressSpriteCoroutine = null;
-        yield break;
     }
 }

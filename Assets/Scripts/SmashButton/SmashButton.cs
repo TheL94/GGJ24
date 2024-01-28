@@ -29,8 +29,6 @@ public class SmashButton : MonoBehaviour
 
         smashAction.performed -= OnButtonPress;
         smashAction.performed += OnButtonPress;
-        smashAction.performed -= ShowPressSprite;
-        smashAction.performed += ShowPressSprite;
 
         fillAmount = startFillAmount;
         isSmeshActive = true;
@@ -46,11 +44,6 @@ public class SmashButton : MonoBehaviour
     {
         fillAmount += increment;
         updateFillAmount?.Invoke(fillAmount);
-    }
-
-    private void ShowPressSprite(InputAction.CallbackContext ctx)
-    {
-        circleCountdown.PressSprite();
     }
 
     IEnumerator Countdown()
