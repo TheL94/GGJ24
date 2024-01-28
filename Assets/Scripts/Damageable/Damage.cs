@@ -4,7 +4,7 @@ public class Damage : MonoBehaviour, IDamageable
 {
     public int startingHealth = 3;
     float m_CurrentHealth;
-    public float lifes
+    public float Health
     {
         get
         {
