@@ -3,11 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class PlayerPhysicMovement : MonoBehaviour
 {
-    Vector3 CameraForward { get => new Vector3(mainCamera.transform.forward.x, 0, mainCamera.transform.forward.z); }
-    Vector3 CameraRight { get => new Vector3(mainCamera.transform.right.x, 0, mainCamera.transform.right.z); }
+    Vector3 CameraForward
+    {
+        get => new Vector3(mainCamera.transform.forward.x, 0, mainCamera.transform.forward.z);
+    }
+
+    Vector3 CameraRight
+    {
+        get => new Vector3(mainCamera.transform.right.x, 0, mainCamera.transform.right.z);
+    }
+    
+    public UnityAction<GameObject> OnBottonRacoonChange;
+
+    private GameObject bottomRacoon;
+    public GameObject BottomRacoon
+    {
+        get
+        {
+            return bottomRacoon;
+        }
+        private set
+        {
+            bottomRacoon = value;
+            OnBottonRacoonChange?.Invoke(bottomRacoon);
+        }
+    }
 
     public float moveSpeed = 1.0f;
     public float runMultiplier = 7.0f;
@@ -24,13 +48,13 @@ public class PlayerPhysicMovement : MonoBehaviour
 
     [Space] public float angleThreshold = .1f;
 
+    private PlayerAnimationController animationController;
     Rigidbody m_rigidbody;
     PlayerInput playerInput;
     Camera mainCamera;
     IDamageable damageable;
 
     InputAction movement; //take the mf from here
-    InputAction run;
     InputAction jump;
 
     bool runIsPressed;
@@ -46,6 +70,7 @@ public class PlayerPhysicMovement : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         m_rigidbody = GetComponent<Rigidbody>();
         damageable = GetComponent<IDamageable>();
+        animationController = GetComponentInChildren<PlayerAnimationController>();
 
         damageable.OnDamaged += OnDamaged;
         mainCamera = Camera.main;
@@ -54,15 +79,11 @@ public class PlayerPhysicMovement : MonoBehaviour
     void Start()
     {
         movement = playerInput.actions.FindAction("Movement");
-        run = playerInput.actions.FindAction("Run");
         jump = playerInput.actions.FindAction("Jump");
 
         jump.performed += JumpPerformed;
         movement.performed += MovementPerformed;
         movement.canceled += MovementCanceled;
-
-        //run.performed += RunPerformed;
-        //run.canceled += RunCancelled;
 
         m_rigidbody.maxLinearVelocity = maxSpeed;
     }
@@ -88,20 +109,11 @@ public class PlayerPhysicMovement : MonoBehaviour
             Vector3 move = CameraForward * moveInput.y + CameraRight * moveInput.x;
             targetRotation = Quaternion.LookRotation(move, transform.up);
         }
+
         float lerpValue = currentLerpTime / rotationTime;
         transform.rotation = Quaternion.Slerp(previousRotation, targetRotation, lerpValue);
 
         currentLerpTime += Time.fixedDeltaTime;
-    }
-
-    void RunPerformed(InputAction.CallbackContext ctx)
-    {
-        runIsPressed = true;
-    }
-
-    void RunCancelled(InputAction.CallbackContext ctx)
-    {
-        runIsPressed = false;
     }
 
     void JumpPerformed(InputAction.CallbackContext context)
@@ -117,14 +129,15 @@ public class PlayerPhysicMovement : MonoBehaviour
 
     void MovementCanceled(InputAction.CallbackContext ctx)
     {
-
     }
 
     void OnDamaged(int damage)
     {
-        GameObject spawnedRaccoon = Instantiate(deadRaccoonPrefab, deadRaccoonSpawnPosition.position, deadRaccoonSpawnPosition.rotation);
+        GameObject spawnedRaccoon = Instantiate(deadRaccoonPrefab, deadRaccoonSpawnPosition.position,
+            deadRaccoonSpawnPosition.rotation);
 
-        spawnedRaccoon.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-ragdollAmount, ragdollAmount), Random.Range(-ragdollAmount, ragdollAmount)));
+        spawnedRaccoon.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-ragdollAmount, ragdollAmount),
+            Random.Range(-ragdollAmount, ragdollAmount)));
 
         StartCoroutine(RaccoonPositioning(damageable.Health));
     }
@@ -135,8 +148,13 @@ public class PlayerPhysicMovement : MonoBehaviour
 
         Vector3 move = CameraForward * moveInput.y + CameraRight * moveInput.x;
 
-        if (runIsPressed)
-            moveSpeed *= runMultiplier;
+        // if (runIsPressed)
+        //     moveSpeed *= runMultiplier;
+        
+        if(moveInput.magnitude > 0.1f)
+            animationController.SetRun();
+        else
+            animationController.SetIdle();
 
         Vector3 moveVelocity = move * (moveSpeed * Time.deltaTime);
         m_rigidbody.MovePosition(transform.position + moveVelocity);
@@ -151,7 +169,8 @@ public class PlayerPhysicMovement : MonoBehaviour
         Stack<Transform> currentPoints = new Stack<Transform>(raccoonsPositions);
 
         Dictionary<GameObject, Transform> raccoonPositionPair = new Dictionary<GameObject, Transform>();
-        Dictionary<GameObject, (Vector3, Quaternion)> raccoonPreviousPositionPair = new Dictionary<GameObject, (Vector3, Quaternion)>();
+        Dictionary<GameObject, (Vector3, Quaternion)> raccoonPreviousPositionPair =
+            new Dictionary<GameObject, (Vector3, Quaternion)>();
 
         for (int i = damageable.MaxHealth; i < currentLife; i++)
         {
@@ -160,6 +179,7 @@ public class PlayerPhysicMovement : MonoBehaviour
         }
 
         List<GameObject> activeRaccoons = new List<GameObject>(currentRaccoons);
+        BottomRacoon = activeRaccoons[activeRaccoons.Count - 1];
 
         for (int i = 0; i < currentRaccoons.Count; i++)
         {
@@ -167,7 +187,8 @@ public class PlayerPhysicMovement : MonoBehaviour
             raccoon.SetActive(true);
 
             raccoonPositionPair.Add(raccoon, currentPoints.Pop());
-            raccoonPreviousPositionPair.Add(raccoon, (raccoon.transform.localPosition, raccoon.transform.localRotation));
+            raccoonPreviousPositionPair.Add(raccoon,
+                (raccoon.transform.localPosition, raccoon.transform.localRotation));
         }
 
         while (elapsedTime <= lerpTime)
@@ -177,8 +198,10 @@ public class PlayerPhysicMovement : MonoBehaviour
                 Transform target = raccoonPositionPair[raccoon];
                 (Vector3, Quaternion) previousValues = raccoonPreviousPositionPair[raccoon];
 
-                transform.localPosition = Vector3.Lerp(previousValues.Item1, target.localPosition, elapsedTime / lerpTime);
-                transform.localRotation = Quaternion.Slerp(previousValues.Item2, target.localRotation, elapsedTime / lerpTime);
+                transform.localPosition =
+                    Vector3.Lerp(previousValues.Item1, target.localPosition, elapsedTime / lerpTime);
+                transform.localRotation =
+                    Quaternion.Slerp(previousValues.Item2, target.localRotation, elapsedTime / lerpTime);
             }
 
             elapsedTime += Time.deltaTime;
