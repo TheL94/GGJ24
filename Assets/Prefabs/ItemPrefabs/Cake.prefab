@@ -49,7 +49,6 @@ MonoBehaviour:
   size: 3
   maxValue: 190
   minValue: 120
-  animationDuration: 0.3
 --- !u!54 &3322929360397739225
 Rigidbody:
   m_ObjectHideFlags: 0
