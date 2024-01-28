@@ -275,7 +275,7 @@ PrefabInstance:
     - target: {fileID: 4096998123659037617, guid: e0612de9a9e28de40820ed852f9b0b08,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.02
       objectReference: {fileID: 0}
     - target: {fileID: 4096998123659037617, guid: e0612de9a9e28de40820ed852f9b0b08,
         type: 3}
@@ -285,7 +285,7 @@ PrefabInstance:
     - target: {fileID: 4096998123659037617, guid: e0612de9a9e28de40820ed852f9b0b08,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.92
+      value: -1.96
       objectReference: {fileID: 0}
     - target: {fileID: 4096998123659037617, guid: e0612de9a9e28de40820ed852f9b0b08,
         type: 3}
@@ -1513,16 +1513,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerRaccon
-      objectReference: {fileID: 0}
-    - target: {fileID: 7164463755269822340, guid: 4c11424ebe545b2458aa52d671377e72,
-        type: 3}
-      propertyPath: m_Name
-      value: Racoon (0)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8164885207243175885, guid: 4c11424ebe545b2458aa52d671377e72,
-        type: 3}
-      propertyPath: moveSpeed
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

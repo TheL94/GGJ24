@@ -1,16 +1,14 @@
-using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PlayerSlotManager : MonoBehaviour
 {
+    public int maxSlots = 3;
     public List<Transform> slotPositions = new List<Transform>();
-    public const int MAX_SLOTS = 3;
-    public int availableSlots = 3;
 
-    [FormerlySerializedAs("pickables")] public Queue<Item> items = new Queue<Item>();
+    Queue<Item> items = new Queue<Item>();
+    int availableSlots;
 
     private void Start()
     {
@@ -18,6 +16,7 @@ public class PlayerSlotManager : MonoBehaviour
         PlayerInteraction.onTakeObject += TakeSlot;
         PlayerInteraction.onReleaseObject -= ReleaseSlot;
         PlayerInteraction.onReleaseObject += ReleaseSlot;
+        availableSlots = maxSlots;
     }
 
     public void TakeSlot(Item item)
@@ -66,16 +65,14 @@ public class PlayerSlotManager : MonoBehaviour
             });
         }
 
+        availableSlots = maxSlots;
         return points;
     }
 
     void MoveToSlot(Item item)
     {
-        int index = MAX_SLOTS - availableSlots;
+        int index = (maxSlots - 1) - availableSlots;
         Transform slot = slotPositions[index];
-        item.transform.DOMove(slot.position, .4f).OnComplete(() =>
-        {
-            item.transform.parent = slot;
-        });
+        item.transform.DOMove(slot.position, .4f).OnComplete(() => { item.transform.parent = slot; });
     }
 }

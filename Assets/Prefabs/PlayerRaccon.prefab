@@ -61,11 +61,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fdc1299e56d37a4881a67a8009ecc55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSlots: 3
   slotPositions:
   - {fileID: 8459225071148313005}
   - {fileID: 5674465433027052575}
   - {fileID: 9046125146628305581}
-  availableSlots: 3
 --- !u!65 &4795400798859363356
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b23d4ef0f40b4f74ab5060df087fe7b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 3
   runMultiplier: 7
   jumpForce: 1
   rotationTime: 0.5
@@ -205,8 +205,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4223194109640977756}
   serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
+  m_Mass: 10
+  m_Drag: 0.3
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -222,7 +222,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 84
   m_CollisionDetection: 1
 --- !u!136 &4104270161800937339
 CapsuleCollider:
@@ -504,7 +504,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 53297640f739f06468f5e69c7d99d846,
         type: 3}
       propertyPath: m_Name
-      value: Racoon
+      value: Racoon (0)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 53297640f739f06468f5e69c7d99d846,
         type: 3}

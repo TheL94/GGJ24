@@ -19,23 +19,24 @@ public class Item : MonoBehaviour, IInteractable
     public int maxValue;
     public int minValue;
 
-    private Collider coll;
+    private Rigidbody rBody;
+    private Collider[] colliders;
     
     void Start()
     {
        Value = Random.Range(minValue, maxValue);
-       coll = gameObject.GetComponentInChildren<Collider>();
-    }
-    
-    public void DestroyItem()
-    {
-        Debug.Log("destroyeed:" + gameObject.name);
-        Destroy(this.gameObject);
+       colliders = gameObject.GetComponentsInChildren<Collider>();
+       rBody = GetComponent<Rigidbody>();
     }
 
     public void Interact()
     {
-        coll.enabled = false;
-        
+        foreach (var coll in colliders)
+        {
+            coll.enabled = false;
+        }
+
+        rBody.useGravity = false;
+        rBody.isKinematic = true;
     }
 }
