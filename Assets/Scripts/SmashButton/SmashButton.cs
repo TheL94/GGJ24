@@ -21,10 +21,13 @@ public class SmashButton : MonoBehaviour
 
     public static bool isSmeshActive;
 
-    private CircleCountdown circleCountdown; 
+    private CircleCountdown circleCountdown;
 
     private void Start()
     {
+        if (!playerInput)
+            playerInput = FindObjectOfType<PlayerInput>();
+
         smashAction = playerInput.actions.FindAction("Smash");
 
         smashAction.performed -= OnButtonPress;

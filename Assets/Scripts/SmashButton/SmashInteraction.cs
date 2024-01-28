@@ -8,9 +8,12 @@ public class SmashInteraction : MonoBehaviour, IInteractable
     public GameObject smashCanvas;
 
     public LayerMask itemMask;
-    
+
     public void Interact()
     {
+        if (!smashCanvas)
+            smashCanvas = GameObject.FindGameObjectWithTag("SmashCanvas");
+
         smashCanvas.SetActive(true);
         smashCanvas.transform.position = new Vector3(transform.position.x, 1000f, transform.position.z);
         Physics.Raycast(new Ray(smashCanvas.transform.position, Vector3.down), out RaycastHit hit, Mathf.Infinity, itemMask);
