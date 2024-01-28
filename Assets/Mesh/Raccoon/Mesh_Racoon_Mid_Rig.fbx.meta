@@ -3,7 +3,17 @@ guid: fed926acf2cb8a249a48f0b1387164db
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Racoon
+    second: {fileID: 2100000, guid: 2108acc6fd2b7fa44a2c532263e4939b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Racoon.001
+    second: {fileID: 2100000, guid: 2108acc6fd2b7fa44a2c532263e4939b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

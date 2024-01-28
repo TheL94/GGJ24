@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brokenVase: {fileID: 7742437319844398754}
+  probability: 30
 --- !u!65 &8381613100079823769
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -114,8 +115,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.79920006, y: 0.845099, z: 0.46533334}
-  m_Center: {x: -0.3898304, y: -0.42254972, z: 1.1628108}
+  m_Size: {x: 0.79920006, y: 0.845099, z: 0.14248681}
+  m_Center: {x: -0.3898304, y: -0.42254972, z: 1.0013875}
 --- !u!4 &2036489669330271429 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 973879641035641589, guid: f02dfb7ee53d3624c830a543381b29db,
@@ -1003,6 +1004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brokenVase: {fileID: 0}
+  probability: 30
 --- !u!1 &8396964105602713924 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1815673127224477609, guid: f02dfb7ee53d3624c830a543381b29db,

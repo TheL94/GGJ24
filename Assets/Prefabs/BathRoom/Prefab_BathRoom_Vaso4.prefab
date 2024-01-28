@@ -66,10 +66,41 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0682312e9ec712a4f99b0aaf0030744d,
         type: 3}
       propertyPath: m_Name
-      value: Mesh_BathRoom_Vaso4
+      value: Prefab_BathRoom_Vaso4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0682312e9ec712a4f99b0aaf0030744d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2085087798182584314}
   m_SourcePrefab: {fileID: 100100000, guid: 0682312e9ec712a4f99b0aaf0030744d, type: 3}
+--- !u!1 &8308917659714343119 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0682312e9ec712a4f99b0aaf0030744d,
+    type: 3}
+  m_PrefabInstance: {fileID: 9191386449624395166}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2085087798182584314
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8308917659714343119}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.049576182, y: 0.025885327, z: 0.04291294}
+  m_Center: {x: -0.0033315753, y: 0.012942663, z: -0.00000001117587}

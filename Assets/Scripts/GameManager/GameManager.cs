@@ -96,16 +96,18 @@ public class GameManager : MonoBehaviour
 
     public void OverwriteHighSore()
     {
-        if (File.Exists(scoresPath))
-        {
-            scores = JsonUtility.FromJson<Scores>(File.ReadAllText(scoresPath));
-        }
-        else
+        if (!File.Exists(scoresPath))
         {
             var c = File.Create(scoresPath);
             c.Close();
-          
         }
+
+        if (Points >= scores.highScores[scores.highScores.Count - 1].Score)
+        {
+            scores.highScores[scores.highScores.Count - 1] = new HighScore { Name = UIManager.Instance.Name.text, Score = Points };
+        }
+        scores.highScores = scores.highScores.OrderBy(x => x.Score).ToList();
+        scores.highScores.Reverse();
 
         File.WriteAllText(scoresPath, JsonUtility.ToJson(scores));
 

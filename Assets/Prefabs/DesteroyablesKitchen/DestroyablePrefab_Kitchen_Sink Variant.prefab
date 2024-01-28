@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brokenVase: {fileID: 3200612331257637328}
+  probability: 30
 --- !u!1001 &5590060411341806104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -119,6 +120,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Broken
+      objectReference: {fileID: 0}
+    - target: {fileID: 7059737278412239816, guid: a0f73d7eb9ff0e44aa0649277611bd4f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7688463743401355634, guid: a0f73d7eb9ff0e44aa0649277611bd4f,
         type: 3}
