@@ -12,7 +12,8 @@ public class HealPlayer : MonoBehaviour
 
         smashButton.onSmeshWin += () =>
         {
-            if (FindObjectOfType<PlayerMovementBehaviour>() is IDamageable damageable)
+            Damage damageable = FindObjectOfType<Damage>();
+            if (damageable != null)
             {
                 damageable.Heal(1);
                 Destroy(gameObject);

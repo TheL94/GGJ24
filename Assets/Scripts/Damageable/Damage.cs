@@ -42,7 +42,7 @@ public class Damage : MonoBehaviour, IDamageable
         }
     }
 
-    void IDamageable.Heal(int heal)
+    public void Heal(int heal)
     {
         if (m_CurrentHealth < MaxHealth)
             m_CurrentHealth += heal;

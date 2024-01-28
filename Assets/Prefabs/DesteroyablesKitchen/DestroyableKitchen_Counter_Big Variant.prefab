@@ -149,6 +149,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1608638451587842386}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1129903574395151655 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1872707404687860853, guid: e1b311773db15494bb77ae3b76382b46,
+    type: 3}
+  m_PrefabInstance: {fileID: 1608638451587842386}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8122494160533320071 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7416282076672454869, guid: e1b311773db15494bb77ae3b76382b46,
@@ -297,7 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32aabd4fd93851c4f8efa1e304046e5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brokenVase: {fileID: 0}
+  brokenVase: {fileID: 1129903574395151655}
   probability: 30
 --- !u!65 &9188428402771235764
 BoxCollider:
@@ -342,17 +348,17 @@ PrefabInstance:
     - target: {fileID: 5835753530713051821, guid: 6e8d4daaec0c51a4487d642152c4b02b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -17.937
       objectReference: {fileID: 0}
     - target: {fileID: 5835753530713051821, guid: 6e8d4daaec0c51a4487d642152c4b02b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.008016256
       objectReference: {fileID: 0}
     - target: {fileID: 5835753530713051821, guid: 6e8d4daaec0c51a4487d642152c4b02b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -3.934
       objectReference: {fileID: 0}
     - target: {fileID: 5835753530713051821, guid: 6e8d4daaec0c51a4487d642152c4b02b,
         type: 3}

@@ -282,6 +282,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1414064352933616180}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6553705256127577539 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5290801833860573175, guid: e255626ef21545e46b760d11fbde2dd4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1414064352933616180}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7160445580790245562 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8124712908994261646, guid: e255626ef21545e46b760d11fbde2dd4,
@@ -470,22 +476,22 @@ PrefabInstance:
     - target: {fileID: 4781174451617331950, guid: 73cbf503fa376864593db57f077f0aca,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.8064175
+      value: 0.6150456
       objectReference: {fileID: 0}
     - target: {fileID: 4781174451617331950, guid: 73cbf503fa376864593db57f077f0aca,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.00022888184
       objectReference: {fileID: 0}
     - target: {fileID: 4781174451617331950, guid: 73cbf503fa376864593db57f077f0aca,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.294861
+      value: 21.644175
       objectReference: {fileID: 0}
     - target: {fileID: 4781174451617331950, guid: 73cbf503fa376864593db57f077f0aca,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4781174451617331950, guid: 73cbf503fa376864593db57f077f0aca,
         type: 3}
@@ -495,7 +501,7 @@ PrefabInstance:
     - target: {fileID: 4781174451617331950, guid: 73cbf503fa376864593db57f077f0aca,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4781174451617331950, guid: 73cbf503fa376864593db57f077f0aca,
         type: 3}
@@ -520,7 +526,7 @@ PrefabInstance:
     - target: {fileID: 6852278273813247876, guid: 73cbf503fa376864593db57f077f0aca,
         type: 3}
       propertyPath: m_Name
-      value: Destroy_Lampada2
+      value: Destroy_Lampada3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -667,7 +673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32aabd4fd93851c4f8efa1e304046e5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brokenVase: {fileID: 0}
+  brokenVase: {fileID: 6553705256127577539}
   probability: 30
 --- !u!65 &3433488941317510061
 BoxCollider:
