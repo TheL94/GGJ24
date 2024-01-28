@@ -35,9 +35,8 @@ public class Damage : MonoBehaviour, IDamageable
 
         if (m_CurrentHealth <= 0)
         {
-            //Fucking die
+            GameManager.Instance.TriggerGameOver();
         }
-        //TODO something
     }
 
     void IDamageable.Heal(int heal)

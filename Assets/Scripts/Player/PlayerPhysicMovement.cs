@@ -142,7 +142,7 @@ public class PlayerPhysicMovement : MonoBehaviour
         spawnedRaccoon.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-ragdollAmount, ragdollAmount),
             Random.Range(-ragdollAmount, ragdollAmount)));
 
-        StartCoroutine(RaccoonPositioning(damageable.Health));
+        //StartCoroutine(RaccoonPositioning(damageable.Health));
     }
 
     void Move()
