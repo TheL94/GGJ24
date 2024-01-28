@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Fridge : Item
 {
-    private void OnDestroy()
-    {
-        if (UIManager.Instance)
-        {
-            UIManager.Instance.stealTheFridge.gameObject.SetActive(false);
-        }
-    }
+    // private void OnDestroy()
+    // {
+    //     if (UIManager.Instance)
+    //     {
+    //         UIManager.Instance.stealTheFridge.gameObject.SetActive(false);
+    //     }
+    // }
 }
