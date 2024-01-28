@@ -42,15 +42,9 @@ public class PlayerInteraction : MonoBehaviour
             if (latestInteract is Item item)
             {
                 interactionCanvas.SetActive(true);
-                interactionCanvas.transform.position = new Vector3(item.transform.position.x,
-                                                                    1000f,
-                                                                    item.transform.position.z);
+                interactionCanvas.transform.position = new Vector3(item.transform.position.x, 1000f, item.transform.position.z);
                 Physics.Raycast(new Ray(interactionCanvas.transform.position, Vector3.down), out RaycastHit hit, Mathf.Infinity);
-
-                interactionCanvas.transform.position = new Vector3(item.transform.position.x,
-                                                                    hit.point.y + 0.05f,
-                                                                    item.transform.position.z);
-
+                interactionCanvas.transform.position = new Vector3(item.transform.position.x, hit.point.y + 0.05f, item.transform.position.z);
                 interactionCanvas.transform.rotation = item.transform.rotation;
             }
 
