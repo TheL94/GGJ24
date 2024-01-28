@@ -86,10 +86,42 @@ PrefabInstance:
     - target: {fileID: 6707212861974085476, guid: 835a719f673f0d84683e7dda30a19218,
         type: 3}
       propertyPath: m_Name
-      value: Mesh_Modular_Door Variant
+      value: Prefab_Modular_Door_v03
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6707212861974085476, guid: 835a719f673f0d84683e7dda30a19218,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9094754711297691370}
   m_SourcePrefab: {fileID: 100100000, guid: 835a719f673f0d84683e7dda30a19218, type: 3}
+--- !u!1 &188455434441241065 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6707212861974085476, guid: 835a719f673f0d84683e7dda30a19218,
+    type: 3}
+  m_PrefabInstance: {fileID: 6884114559485464205}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &9094754711297691370
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188455434441241065}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5290924337773016344, guid: e78493a684e8ad74283bd4f019e8e581, type: 3}
