@@ -37,6 +37,9 @@ public class RoombaBrain : MonoBehaviour
 
     protected int numberOfCollisions = 0;
 
+    public AudioSource m_audioSource;
+    public AudioClip audioMove;
+
     private void Start()
     {
         Init();
