@@ -21,12 +21,14 @@ public class Item : MonoBehaviour, IInteractable
 
     private Rigidbody rBody;
     private Collider[] colliders;
-    
+    AudioSource m_AudioSource;
+
     protected virtual void Start()
     {
        Value = Random.Range(minValue, maxValue);
        colliders = gameObject.GetComponentsInChildren<Collider>();
        rBody = GetComponent<Rigidbody>();
+       m_AudioSource = GetComponent<AudioSource>();
     }
 
     public void Interact()
@@ -38,5 +40,6 @@ public class Item : MonoBehaviour, IInteractable
 
         rBody.useGravity = false;
         rBody.isKinematic = true;
+        m_AudioSource.Play();
     }
 }

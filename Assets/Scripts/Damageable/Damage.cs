@@ -16,16 +16,19 @@ public class Damage : MonoBehaviour, IDamageable
 
     public int startingHealth = 3;
     int m_CurrentHealth;
+    AudioSource m_AudioSource;
 
     private void Awake()
     {
         m_CurrentHealth = startingHealth;
+        m_AudioSource = GetComponent<AudioSource>();
     }
 
     void IDamageable.Damage(int damage)
     {
         m_CurrentHealth -= damage;
         m_CurrentVulnerability = vulnerability;
+        m_AudioSource.Play();
 
         if (m_CurrentHealth <= 0)
         {
