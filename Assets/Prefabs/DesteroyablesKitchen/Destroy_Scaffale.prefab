@@ -355,22 +355,22 @@ PrefabInstance:
     - target: {fileID: 4781174451617331950, guid: 73cbf503fa376864593db57f077f0aca,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.8
+      value: 0.2949982
       objectReference: {fileID: 0}
     - target: {fileID: 4781174451617331950, guid: 73cbf503fa376864593db57f077f0aca,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 1.3964193
       objectReference: {fileID: 0}
     - target: {fileID: 4781174451617331950, guid: 73cbf503fa376864593db57f077f0aca,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15
+      value: 19.545002
       objectReference: {fileID: 0}
     - target: {fileID: 4781174451617331950, guid: 73cbf503fa376864593db57f077f0aca,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4781174451617331950, guid: 73cbf503fa376864593db57f077f0aca,
         type: 3}
@@ -380,7 +380,7 @@ PrefabInstance:
     - target: {fileID: 4781174451617331950, guid: 73cbf503fa376864593db57f077f0aca,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4781174451617331950, guid: 73cbf503fa376864593db57f077f0aca,
         type: 3}
@@ -395,7 +395,7 @@ PrefabInstance:
     - target: {fileID: 4781174451617331950, guid: 73cbf503fa376864593db57f077f0aca,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 4781174451617331950, guid: 73cbf503fa376864593db57f077f0aca,
         type: 3}
@@ -528,7 +528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32aabd4fd93851c4f8efa1e304046e5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brokenVase: {fileID: 0}
+  brokenVase: {fileID: 7797544768622986581}
   probability: 30
 --- !u!65 &8650506433215831545
 BoxCollider:

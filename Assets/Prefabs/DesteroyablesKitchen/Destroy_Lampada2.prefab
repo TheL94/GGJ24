@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32aabd4fd93851c4f8efa1e304046e5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brokenVase: {fileID: 0}
+  brokenVase: {fileID: 836422699666424396}
   probability: 30
 --- !u!65 &2395074138408248712
 BoxCollider:
@@ -284,6 +284,12 @@ PrefabInstance:
 --- !u!4 &58620115029104886 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4766889304369593677, guid: e255626ef21545e46b760d11fbde2dd4,
+    type: 3}
+  m_PrefabInstance: {fileID: 4825367581727548859}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &836422699666424396 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5290801833860573175, guid: e255626ef21545e46b760d11fbde2dd4,
     type: 3}
   m_PrefabInstance: {fileID: 4825367581727548859}
   m_PrefabAsset: {fileID: 0}
@@ -583,7 +589,7 @@ PrefabInstance:
     - target: {fileID: 4781174451617331950, guid: 73cbf503fa376864593db57f077f0aca,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.8064175
+      value: -10.73
       objectReference: {fileID: 0}
     - target: {fileID: 4781174451617331950, guid: 73cbf503fa376864593db57f077f0aca,
         type: 3}
@@ -593,7 +599,7 @@ PrefabInstance:
     - target: {fileID: 4781174451617331950, guid: 73cbf503fa376864593db57f077f0aca,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.294861
+      value: 13.4536705
       objectReference: {fileID: 0}
     - target: {fileID: 4781174451617331950, guid: 73cbf503fa376864593db57f077f0aca,
         type: 3}
