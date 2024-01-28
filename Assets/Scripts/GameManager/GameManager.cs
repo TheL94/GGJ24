@@ -30,7 +30,8 @@ public class GameManager : MonoBehaviour
     public WaveSpawner bigItemSpawner;
     public WaveSpawner mediumItemSpawner;
     public WaveSpawner smallItemSPawner;
-
+    public GameObject itemFridge;
+    public GameObject nonItemFridge;
     public enum GamePhase
     {
         STARTINGCUTSCENE,
@@ -73,7 +74,10 @@ public class GameManager : MonoBehaviour
         yield return null;
         gamePhase = GamePhase.PLAYNG;
         Debug.Log("game stared!!");
-
+        yield return new WaitForSeconds(350);
+        itemFridge.SetActive(true);
+        nonItemFridge.SetActive(false);
+        UIManager.Instance.stealTheFridge.gameObject.SetActive(true);
     }
     
     public IEnumerator CoGameOver()
