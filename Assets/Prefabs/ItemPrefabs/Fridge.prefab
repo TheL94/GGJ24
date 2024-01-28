@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2330342322068195601}
-  - component: {fileID: 751025263157149743}
   - component: {fileID: 3902988761859947104}
+  - component: {fileID: 4003009970173229731}
   m_Layer: 6
   m_Name: Fridge
   m_TagString: Untagged
@@ -34,21 +34,6 @@ Transform:
   - {fileID: 7615966361146504217}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &751025263157149743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2458396268977265407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df46250847ee8d0479254f7733cb5f64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  size: 3
-  maxValue: 250
-  minValue: 200
 --- !u!54 &3902988761859947104
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -76,6 +61,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4003009970173229731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2458396268977265407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a297403182880c946a4742a5134d9746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 3
+  maxValue: 1501
+  minValue: 1500
+  animationDuration: 0.3
 --- !u!1001 &552671562672827762
 PrefabInstance:
   m_ObjectHideFlags: 0
