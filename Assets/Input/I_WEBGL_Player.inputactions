@@ -40,24 +40,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Run",
-                    "type": "Button",
-                    "id": "c80b2728-c629-4cc5-8136-c47ca44271ff",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Jump",
-                    "type": "Button",
-                    "id": "5c1be314-a693-40be-b9ef-b845e5a0763d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -184,8 +166,30 @@
                 },
                 {
                     "name": "",
+                    "id": "4fd61692-ba0c-4214-b51b-97b98ec86525",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "a5c888d4-fd27-4b08-95cc-d801e3bc8d56",
                     "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Smash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "27445ba5-5fa5-4997-b816-439ffa5b162d",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -206,23 +210,12 @@
                 },
                 {
                     "name": "",
-                    "id": "552a4eba-e001-4402-bcb1-209d09338e46",
-                    "path": "<Keyboard>/shift",
+                    "id": "05907440-aec9-4c60-a794-f6bbfac5f938",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Run",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3904b042-b2cd-427c-94fb-19138d6d2e7a",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
+                    "action": "Release",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
