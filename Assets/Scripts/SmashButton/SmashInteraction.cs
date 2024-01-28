@@ -11,7 +11,8 @@ public class SmashInteraction : MonoBehaviour, IInteractable
     
     public void Interact()
     {
-        canvas = Instantiate(canvasPrefab);
+        canvas = Instantiate(canvasPrefab, transform.position + new Vector3(0, 0.5f, 0), transform.rotation);
+
         var countdown = canvas.GetComponentInChildren<CircleCountdown>();
         SmashButton.StartCountDown(countdown);
         SmashButton.onSmeshWin += SmashButton_onSmeshWin;
@@ -21,10 +22,12 @@ public class SmashInteraction : MonoBehaviour, IInteractable
     private void SmashButton_onSmeshLose()
     {
         SmashButton.onSmeshWin -= SmashButton_onSmeshWin;
+        DestroyImmediate(canvas);
     }
 
     private void SmashButton_onSmeshWin()
     {
         SmashButton.onSmeshLose -= SmashButton_onSmeshLose;
+        DestroyImmediate(canvas);
     }
 }
