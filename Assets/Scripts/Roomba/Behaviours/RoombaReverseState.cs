@@ -11,7 +11,7 @@ public class RoombaReverseState : RoombaState
         brainInstance.m_audioSource.Stop();
         brainInstance.StopMoving();
 
-        brainInstance.m_audioSource.clip = brainInstance.m_audioSource.clip;
+        brainInstance.m_audioSource.clip = brainInstance.audioMove;
         brainInstance.m_audioSource.Play();
     }
 
