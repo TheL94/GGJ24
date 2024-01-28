@@ -14,6 +14,11 @@ public class PlayerInteraction : MonoBehaviour
     public static UnityAction<Item> onTakeObject;
     public static UnityAction onReleaseObject;
 
+    public static UnityAction onTriggerEnter;
+    public static UnityAction onTriggerExit;
+
+    public GameObject interactionCanvas;
+
     private void Start()
     {
         playerInput = GetComponentInParent<PlayerInput>();
@@ -33,6 +38,22 @@ public class PlayerInteraction : MonoBehaviour
         {
             Debug.Log("found " + other.name);
             latestInteract = interactable;
+
+            if (latestInteract is Item item)
+            {
+                interactionCanvas.SetActive(true);
+                interactionCanvas.transform.position = new Vector3(item.transform.position.x,
+                                                                    1000f,
+                                                                    item.transform.position.z);
+                Physics.Raycast(new Ray(interactionCanvas.transform.position, Vector3.down), out RaycastHit hit, Mathf.Infinity);
+
+                interactionCanvas.transform.position = new Vector3(item.transform.position.x,
+                                                                    hit.point.y + 0.05f,
+                                                                    item.transform.position.z);
+
+                interactionCanvas.transform.rotation = item.transform.rotation;
+            }
+
             interactAction.performed += Interact;
         }
     }
@@ -45,6 +66,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             Debug.Log("ciao " + other.name);
             latestInteract = null;
+            interactionCanvas.SetActive(false);
             interactAction.performed -= Interact;
         }
     }
