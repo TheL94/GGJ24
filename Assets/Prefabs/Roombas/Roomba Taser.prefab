@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 8143472241445515842}
   - component: {fileID: 6589319410044407758}
   - component: {fileID: 8133776031075459691}
+  - component: {fileID: 7986436651791485934}
   - component: {fileID: 1890107978481718449}
   - component: {fileID: 2103992397530608897}
   - component: {fileID: 7090492322487782564}
-  - component: {fileID: 5651937235312476809}
   m_Layer: 0
   m_Name: Roomba Taser
   m_TagString: Untagged
@@ -38,7 +38,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9028996453309939075}
-  - {fileID: 4027496333396176406}
+  - {fileID: 3829486784595448237}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &237193281317864157
@@ -133,6 +133,31 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7986436651791485934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71385966583641626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c3c1b94e48790428462b232e37f3a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerRoombaFov: {fileID: 1890107978481718449}
+  turningRoombaFov: {fileID: 2103992397530608897}
+  playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  speed: 5
+  turningSpeed: 50
+  angleThreshold: 45
+  acceleration: 2
+  turningAcceleration: 6
+  taserParticle: {fileID: 0}
+  taserMuzzle: {fileID: 3829486784595448237}
+  taserStunRadius: 3
 --- !u!114 &1890107978481718449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +172,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nRay: 20
   degrees: 70
-  distance: 15
+  distance: 13
+  shootingPoint: {fileID: 3829486784595448237}
 --- !u!114 &2103992397530608897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,6 +189,7 @@ MonoBehaviour:
   nRay: 50
   degrees: 180
   distance: 5
+  shootingPoint: {fileID: 3829486784595448237}
 --- !u!54 &7090492322487782564
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -190,32 +217,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 1
---- !u!114 &5651937235312476809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 71385966583641626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94c3c1b94e48790428462b232e37f3a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerRoombaFov: {fileID: 1890107978481718449}
-  turningRoombaFov: {fileID: 2103992397530608897}
-  playerLayerMask:
-    serializedVersion: 2
-    m_Bits: 128
-  speed: 10
-  turningSpeed: 35
-  angleThreshold: 45
-  acceleration: 2
-  turningAcceleration: 7
-  taserParticle: {fileID: 0}
-  taserMuzzle: {fileID: 4027496333396176406}
-  taserStunRadius: 2
---- !u!1 &3162794974515454133
+--- !u!1 &4824493141851488747
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -223,24 +225,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4027496333396176406}
+  - component: {fileID: 3829486784595448237}
   m_Layer: 0
-  m_Name: Taser Muzzle
+  m_Name: Taser muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4027496333396176406
+--- !u!4 &3829486784595448237
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3162794974515454133}
+  m_GameObject: {fileID: 4824493141851488747}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.979}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

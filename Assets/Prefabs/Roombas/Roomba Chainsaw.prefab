@@ -38,6 +38,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9028996453309939075}
+  - {fileID: 6290404302117262405}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &237193281317864157
@@ -147,6 +148,7 @@ MonoBehaviour:
   nRay: 35
   degrees: 180
   distance: 15
+  shootingPoint: {fileID: 6290404302117262405}
 --- !u!114 &2103992397530608897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +164,7 @@ MonoBehaviour:
   nRay: 50
   degrees: 75
   distance: 5
+  shootingPoint: {fileID: 6290404302117262405}
 --- !u!54 &7090492322487782564
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -213,6 +216,37 @@ MonoBehaviour:
   turningAcceleration: 5
   chainsawTurnSpeed: 100
   chainsawChargeSpeed: 30
+--- !u!1 &5207649926532438440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6290404302117262405}
+  m_Layer: 0
+  m_Name: RaycastShooter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6290404302117262405
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5207649926532438440}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1677411382820239899}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7308116947012044465
 GameObject:
   m_ObjectHideFlags: 0
