@@ -23,6 +23,7 @@ public class RoombaBrain : MonoBehaviour
     public float turningAcceleration;
 
     protected Animator animator;
+    protected Rigidbody rigidbody;
 
     protected float currentSpeed;
     protected float currentRotationSpeed;
@@ -43,7 +44,6 @@ public class RoombaBrain : MonoBehaviour
     private void Update()
     {
         Debug.DrawRay(transform.position, transform.forward, Color.red);
-        Debug.Log("Total Collisions: " + numberOfCollisions);
 
         transform.position += (transform.forward * currentSpeed * Time.deltaTime);
         transform.Rotate(transform.up * currentRotationSpeed * Time.deltaTime);
@@ -62,6 +62,8 @@ public class RoombaBrain : MonoBehaviour
     {
         TargetDetected = false;
         Bumped = false;
+
+        rigidbody = GetComponent<Rigidbody>();
     }
 
     public void SearchForTarget()
@@ -107,11 +109,17 @@ public class RoombaBrain : MonoBehaviour
     {
         numberOfCollisions++;
         Bumped = numberOfCollisions > 0;
+
+        rigidbody.velocity = Vector3.zero;
+        rigidbody.angularVelocity = Vector3.zero;
     }
 
     private void OnCollisionExit(Collision collision)
     {
         numberOfCollisions--;
         Bumped = numberOfCollisions > 0;
+
+        rigidbody.velocity = Vector3.zero;
+        rigidbody.angularVelocity = Vector3.zero;
     }
 }
