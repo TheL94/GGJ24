@@ -1,9 +1,13 @@
+using System;
 using UnityEngine;
 
 public class Damage : MonoBehaviour, IDamageable
 {
     public float vulnerability = 2f;
     float m_CurrentVulnerability;
+
+    public Action<int> OnDamaged { get; set; }
+
     public float Vulnerability
     {
         get
@@ -29,15 +33,19 @@ public class Damage : MonoBehaviour, IDamageable
 
     void IDamageable.Damage(int damage)
     {
-        m_CurrentHealth-= damage;
+        m_CurrentHealth -= damage;
         m_CurrentVulnerability = vulnerability;
 
-        if(m_CurrentHealth <= 0) { }//TODO something
+        if (m_CurrentHealth <= 0)
+        {
+            //Fucking die
+        }
+        //TODO something
     }
 
     private void Update()
     {
-        if(m_CurrentVulnerability > 0)
+        if (m_CurrentVulnerability > 0)
             m_CurrentVulnerability -= Time.deltaTime;
 
         if (m_CurrentVulnerability == 0)
