@@ -14,7 +14,7 @@ public class SmashInteraction : MonoBehaviour, IInteractable
         if (!smashCanvas)
             smashCanvas = GameObject.FindGameObjectWithTag("SmashCanvas");
 
-        smashCanvas.SetActive(true);
+        smashCanvas.transform.GetChild(0).gameObject.SetActive(true);
         smashCanvas.transform.position = new Vector3(transform.position.x, 1000f, transform.position.z);
         Physics.Raycast(new Ray(smashCanvas.transform.position, Vector3.down), out RaycastHit hit, Mathf.Infinity, itemMask);
         smashCanvas.transform.position = new Vector3(transform.position.x, hit.point.y + 0.05f, transform.position.z);
@@ -31,12 +31,12 @@ public class SmashInteraction : MonoBehaviour, IInteractable
     private void SmashButton_onSmeshLose()
     {
         SmashButton.ResetState();
-        smashCanvas.SetActive(false);
+        smashCanvas.transform.GetChild(0).gameObject.SetActive(false);
     }
 
     private void SmashButton_onSmeshWin()
     {
         SmashButton.ResetState();
-        smashCanvas.SetActive(false);
+        smashCanvas.transform.GetChild(0).gameObject.SetActive(false);
     }
 }
