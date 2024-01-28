@@ -52,6 +52,7 @@ public class MainMenuUi : MonoBehaviour
             highScore.Points.text = item.Score + "";
         }
 
+        activeCamera = mainCam;
         scoreCam.gameObject.SetActive(false);
         ScoreMenu.alpha = 0;
     }
