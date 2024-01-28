@@ -60,13 +60,6 @@ public class GameManager : MonoBehaviour
         scores.highScores.Reverse();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-
     public IEnumerator CoStartinCutscene()
     {
         Debug.Log("enjoy the spawning");
@@ -82,7 +75,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("game stared!!");
 
     }
-
     
     public IEnumerator CoGameOver()
     {
