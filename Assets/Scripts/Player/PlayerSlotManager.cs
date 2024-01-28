@@ -6,7 +6,8 @@ public class PlayerSlotManager : MonoBehaviour
 {
     public int maxSlots = 3;
     public List<Transform> slotPositions = new List<Transform>();
-
+    public Transform fridgeSlot;
+    
     Queue<Item> items = new Queue<Item>();
     int availableSlots;
 
@@ -64,15 +65,22 @@ public class PlayerSlotManager : MonoBehaviour
                 item.transform.DOScale(Vector3.zero, .2f).OnComplete(() => Destroy(item));
             });
         }
-
         availableSlots = maxSlots;
         return points;
     }
 
     void MoveToSlot(Item item)
     {
-        int index = (maxSlots - 1) - availableSlots;
-        Transform slot = slotPositions[index];
-        item.transform.DOMove(slot.position, .4f).OnComplete(() => { item.transform.parent = slot; });
+        if (item is Fridge)
+        {
+            item.transform.DOMove(fridgeSlot.position, .4f).OnComplete(() => { item.transform.parent = fridgeSlot; });
+            item.transform.DORotate(fridgeSlot.rotation.eulerAngles, .4f);
+        }
+        else
+        {
+            int index = (maxSlots - 1) - availableSlots;
+            Transform slot = slotPositions[index];
+            item.transform.DOMove(slot.position, .4f).OnComplete(() => { item.transform.parent = slot; });
+        }
     }
 }

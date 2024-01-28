@@ -22,7 +22,7 @@ public class Item : MonoBehaviour, IInteractable
     private Rigidbody rBody;
     private Collider[] colliders;
     
-    void Start()
+    protected virtual void Start()
     {
        Value = Random.Range(minValue, maxValue);
        colliders = gameObject.GetComponentsInChildren<Collider>();
