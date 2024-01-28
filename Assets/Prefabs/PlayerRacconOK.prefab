@@ -402,7 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbe7f6a4305762b488fec93d0135f3b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vulnerability: 2
+  vulnerability: 5
   startingHealth: 3
 --- !u!54 &5114240602137834407
 Rigidbody:

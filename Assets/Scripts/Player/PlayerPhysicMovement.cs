@@ -190,7 +190,9 @@ public class PlayerPhysicMovement : MonoBehaviour
         BottomRacoon = activeRaccoons[activeRaccoons.Count - 1];
         ActiveRacoons = activeRaccoons.Count;
 
-        for (int i = 0; i < currentRaccoons.Count; i++)
+        int stackCount = currentRaccoons.Count;
+
+        for (int i = 0; i < stackCount; i++)
         {
             GameObject raccoon = currentRaccoons.Pop();
             raccoon.SetActive(true);
@@ -200,23 +202,23 @@ public class PlayerPhysicMovement : MonoBehaviour
                 (raccoon.transform.localPosition, raccoon.transform.localRotation));
         }
 
-        //while (elapsedTime <= lerpTime)
-        //{
-        //    foreach (GameObject raccoon in activeRaccoons)
-        //    {
-        //        Transform target = raccoonPositionPair[raccoon];
-        //        (Vector3, Quaternion) previousValues = raccoonPreviousPositionPair[raccoon];
+        while (elapsedTime <= lerpTime)
+        {
+            foreach (GameObject raccoon in activeRaccoons)
+            {
+                Transform target = raccoonPositionPair[raccoon];
+                (Vector3, Quaternion) previousValues = raccoonPreviousPositionPair[raccoon];
 
-        //        transform.localPosition =
-        //            Vector3.Lerp(previousValues.Item1, target.localPosition, elapsedTime / lerpTime);
-        //        transform.localRotation =
-        //            Quaternion.Slerp(previousValues.Item2, target.localRotation, elapsedTime / lerpTime);
-        //    }
+                raccoon.transform.localPosition =
+                    Vector3.Lerp(previousValues.Item1, target.localPosition, elapsedTime / lerpTime);
+                raccoon.transform.localRotation =
+                    Quaternion.Slerp(previousValues.Item2, target.localRotation, elapsedTime / lerpTime);
+            }
 
-        //    elapsedTime += Time.deltaTime;
+            elapsedTime += Time.deltaTime;
 
-        //    yield return new WaitForEndOfFrame();
-        //}
+            yield return new WaitForEndOfFrame();
+        }
 
         yield return new WaitForEndOfFrame();
     }
