@@ -10,6 +10,8 @@ public class RoombaChainsawBrain : RoombaBrain
     protected float baseTurningAcceleration;
     protected float baseAcceleration;
 
+    [SerializeField] AudioClip chainsawAudio;
+
     protected override void Init()
     {
         base.Init();
@@ -33,6 +35,10 @@ public class RoombaChainsawBrain : RoombaBrain
 
     public void ChainsawRush(Vector3 direction)
     {
+        m_audioSource.Stop();
+        m_audioSource.clip = chainsawAudio;
+
+        m_audioSource.Play();
         acceleration = chainsawChargeSpeed / 2f;
 
         MoveToRelative(direction, chainsawChargeSpeed);

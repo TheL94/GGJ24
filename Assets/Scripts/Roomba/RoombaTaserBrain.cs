@@ -9,6 +9,7 @@ public class RoombaTaserBrain : RoombaBrain
     [SerializeField] Transform taserMuzzle;
 
     [SerializeField] float taserStunRadius;
+    [SerializeField] AudioClip taserAudio;
 
     protected override void Init()
     {
@@ -27,7 +28,11 @@ public class RoombaTaserBrain : RoombaBrain
 
             Collider[] colliders = Physics.OverlapSphere(hit.transform.position, taserStunRadius);
 
+            m_audioSource.Stop();
+            m_audioSource.clip = taserAudio;
+
             taserParticle.Play();
+            m_audioSource.Play();
 
             foreach (Collider hitCollider in colliders)
             {
