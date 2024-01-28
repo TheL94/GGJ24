@@ -49,7 +49,8 @@ public class CameraManager : MonoBehaviour
         activeZone = zone;
         activeZone.VirtualCamera.gameObject.SetActive(true);
         yield return new WaitUntil(() => !brain.IsBlending);
-        previusZone.VirtualCamera.gameObject.SetActive(false);
+        if(previusZone != null)
+            previusZone.VirtualCamera.gameObject.SetActive(false);
         currentRoutine = null;
     }
 }
