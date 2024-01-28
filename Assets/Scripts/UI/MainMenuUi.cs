@@ -12,7 +12,7 @@ using UnityEngine.UI;
 public class MainMenuUi : MonoBehaviour
 {
     public SceneField gamplayScene;
-    
+
     public Scores scores;
     public GameObject higScorePrefab;
     public RectTransform ScoresParent;
@@ -20,7 +20,7 @@ public class MainMenuUi : MonoBehaviour
     public CanvasGroup MainMenu;
     public CanvasGroup ScoreMenu;
     public Image fadeImage;
-    
+
     public CinemachineVirtualCamera mainCam;
     public CinemachineVirtualCamera scoreCam;
     public CinemachineBrain brain;
@@ -58,7 +58,7 @@ public class MainMenuUi : MonoBehaviour
 
     public void StartGame()
     {
-        fadeImage.DOFade(1, .3f).OnComplete(() => SceneManager.LoadScene(gamplayScene));
+        fadeImage.DOFade(1, .3f).OnComplete(() => SceneManager.LoadScene(gamplayScene, LoadSceneMode.Single));
     }
 
     public void ExitGame()
@@ -69,7 +69,7 @@ public class MainMenuUi : MonoBehaviour
     public void ShowScore()
     {
         MainMenu.DOFade(0, 1f);
-        ActivateCamera(scoreCam,() => { ScoreMenu.DOFade(1, .5f); });
+        ActivateCamera(scoreCam, () => { ScoreMenu.DOFade(1, .5f); });
     }
 
     public void ShowMenu()
