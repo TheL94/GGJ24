@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     public WaveSpawner smallItemSPawner;
     public GameObject itemFridge;
     public GameObject nonItemFridge;
+    public SceneField menu;
     public enum GamePhase
     {
         STARTINGCUTSCENE,
@@ -92,10 +93,12 @@ public class GameManager : MonoBehaviour
         yield return null;
         //high score check
 
+        SceneManager.LoadScene(menu);
         if (Points >= scores.highScores[scores.highScores.Count - 1].Score)
         {
             UIManager.Instance.highscoreInsertion.gameObject.SetActive(true);
             UIManager.Instance.finalScore.text = Points + "";
+
         }
     }
 

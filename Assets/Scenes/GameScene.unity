@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
-  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
-  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientSkyColor: {r: 0.8254717, g: 0.8836478, b: 1, a: 1}
+  m_AmbientEquatorColor: {r: 0.6465379, g: 0.751068, b: 0.8207547, a: 1}
+  m_AmbientGroundColor: {r: 0.3301887, g: 0.28086805, b: 0.18222678, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 6bfab16f387f95e4bb60f866299be241, type: 2}
   m_HaloStrength: 0.5
@@ -22765,6 +22765,9 @@ MonoBehaviour:
   smallItemSPawner: {fileID: 83057936}
   itemFridge: {fileID: 0}
   nonItemFridge: {fileID: 0}
+  menu:
+    sceneAsset: {fileID: 102900000, guid: 232edde55139ee6419d988790d3cd3fd, type: 3}
+    sceneName: mainMenu
   gamePhase: 0
 --- !u!4 &975775814
 Transform:
