@@ -33,6 +33,8 @@ public class PlayerPhysicMovement : MonoBehaviour
         }
     }
 
+    public int ActiveRacoons { get; private set; } = 3;
+
     public float moveSpeed = 1.0f;
     public float runMultiplier = 7.0f;
     public float jumpForce = 1f;
@@ -180,6 +182,7 @@ public class PlayerPhysicMovement : MonoBehaviour
 
         List<GameObject> activeRaccoons = new List<GameObject>(currentRaccoons);
         BottomRacoon = activeRaccoons[activeRaccoons.Count - 1];
+        ActiveRacoons = activeRaccoons.Count;
 
         for (int i = 0; i < currentRaccoons.Count; i++)
         {
