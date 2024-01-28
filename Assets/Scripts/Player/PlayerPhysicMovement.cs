@@ -8,7 +8,7 @@ public class PlayerPhysicMovement : MonoBehaviour
     public float moveSpeed = 1.0f;
     public float runMultiplier = 7.0f;
     public float jumpForce = 1f;
-    public float rotationTime = 1f;
+    public float rotationTime = 0.5f;
     public float maxSpeed;
 
     [Space] public float angleThreshold = .1f;
@@ -16,17 +16,17 @@ public class PlayerPhysicMovement : MonoBehaviour
     Rigidbody m_rigidbody;
     PlayerInput playerInput;
 
-    InputAction movement;
+    InputAction movement; //take the mf from here
     InputAction run;
     InputAction jump;
 
-    Coroutine m_delayedRotationRoutine;
-    Tweener m_delayedRotation;
     bool runIsPressed;
-    bool movementIsPressed;
+
+    private float currentLerpTime = 0;
 
     private Vector2 moveInput;
-    private Vector3 moveDirection;
+    private Quaternion targetRotation;
+    private Quaternion previousRotation;
 
     void Awake()
     {
@@ -39,11 +39,14 @@ public class PlayerPhysicMovement : MonoBehaviour
         movement = playerInput.actions.FindAction("Movement");
         run = playerInput.actions.FindAction("Run");
         jump = playerInput.actions.FindAction("Jump");
+
         jump.performed += JumpPerformed;
         movement.performed += MovementPerformed;
         movement.canceled += MovementCanceled;
+
         run.performed += RunPerformed;
         run.canceled += RunCancelled;
+
         m_rigidbody.maxLinearVelocity = maxSpeed;
     }
 
@@ -60,28 +63,17 @@ public class PlayerPhysicMovement : MonoBehaviour
     {
         if (!isActiveAndEnabled)
             return;
-        
-        moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
-        // FIX
-        // transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, currentTime / lerpTime);
-        
+
         Move();
-        CheckCurrentRotation();
-    }
 
-    void CheckCurrentRotation()
-    {
-        if (Vector3.Angle(transform.forward, moveDirection.normalized) > 30f)
+        if (moveInput != Vector2.zero)
         {
-            if (m_delayedRotationRoutine != null)
-            {
-                StopCoroutine(m_delayedRotationRoutine);
-            }
-
-            moveInput = movement.ReadValue<Vector2>();
-            moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
-            m_delayedRotationRoutine = StartCoroutine(SlerpRotation(moveInput, moveDirection));
+            targetRotation = Quaternion.LookRotation(new Vector3(moveInput.x, 0, moveInput.y), transform.up);
         }
+        float lerpValue = currentLerpTime / rotationTime;
+        transform.rotation = Quaternion.Slerp(previousRotation, targetRotation, lerpValue);
+
+        currentLerpTime += Time.fixedDeltaTime;
     }
 
     void RunPerformed(InputAction.CallbackContext ctx)
@@ -101,48 +93,24 @@ public class PlayerPhysicMovement : MonoBehaviour
 
     void MovementPerformed(InputAction.CallbackContext context)
     {
-        if (!movementIsPressed)
-        {
-            movementIsPressed = true;
-
-            moveInput = movement.ReadValue<Vector2>();
-            moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
-            m_delayedRotationRoutine = StartCoroutine(SlerpRotation(moveInput, moveDirection));
-        }
+        previousRotation = transform.rotation;
+        currentLerpTime = 0;
     }
 
     void MovementCanceled(InputAction.CallbackContext ctx)
     {
-        movementIsPressed = false;
+
     }
 
     void Move()
     {
+        moveInput = movement.ReadValue<Vector2>();
+
         if (runIsPressed)
             moveSpeed *= runMultiplier;
 
-        Vector3 moveVelocity = moveDirection.normalized * (moveSpeed * Time.deltaTime);
+        Vector3 moveVelocity = new Vector3(moveInput.x, 0, moveInput.y) * (moveSpeed * Time.deltaTime);
         m_rigidbody.MovePosition(transform.position + moveVelocity);
-    }
 
-    IEnumerator SlerpRotation(Vector2 inputVector, Vector3 moveDir3)
-    {
-        float lerpTime = rotationTime;
-        float currentTime = 0;
-        var wait = new WaitForEndOfFrame();
-
-        do
-        {
-            // inputVector = ctx.ReadValue<Vector2>();
-            // moveDir3 = new Vector3(inputVector.x, 0, inputVector.y);
-
-            var lookRotation = Quaternion.LookRotation(moveDir3.normalized, Vector3.up);
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, currentTime / lerpTime);
-
-            currentTime += Time.deltaTime;
-            yield return wait;
-        } while (Vector3.Angle(transform.forward, moveDir3.normalized) > angleThreshold);
-
-        m_delayedRotationRoutine = null;
     }
 }
