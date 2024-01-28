@@ -73,6 +73,7 @@ public class PlayerPhysicMovement : MonoBehaviour
         animationController = GetComponentInChildren<PlayerAnimationController>();
 
         damageable.OnDamaged += OnDamaged;
+        damageable.OnHealed += OnDamaged;
         mainCamera = Camera.main;
     }
 
