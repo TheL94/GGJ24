@@ -5,6 +5,9 @@ using DG.Tweening;
 
 public class PlayerPhysicMovement : MonoBehaviour
 {
+    Vector3 CameraForward { get => new Vector3(mainCamera.transform.forward.x, 0, mainCamera.transform.forward.z); }
+    Vector3 CameraRight { get => new Vector3(mainCamera.transform.right.x, 0, mainCamera.transform.right.z); }
+
     public float moveSpeed = 1.0f;
     public float runMultiplier = 7.0f;
     public float jumpForce = 1f;
@@ -15,6 +18,7 @@ public class PlayerPhysicMovement : MonoBehaviour
 
     Rigidbody m_rigidbody;
     PlayerInput playerInput;
+    Camera mainCamera;
 
     InputAction movement; //take the mf from here
     InputAction run;
@@ -32,6 +36,8 @@ public class PlayerPhysicMovement : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         m_rigidbody = GetComponent<Rigidbody>();
+
+        mainCamera = Camera.main;
     }
 
     void Start()
@@ -68,7 +74,8 @@ public class PlayerPhysicMovement : MonoBehaviour
 
         if (moveInput != Vector2.zero)
         {
-            targetRotation = Quaternion.LookRotation(new Vector3(moveInput.x, 0, moveInput.y), transform.up);
+            Vector3 move = CameraForward * moveInput.y + CameraRight * moveInput.x;
+            targetRotation = Quaternion.LookRotation(move, transform.up);
         }
         float lerpValue = currentLerpTime / rotationTime;
         transform.rotation = Quaternion.Slerp(previousRotation, targetRotation, lerpValue);
@@ -106,10 +113,12 @@ public class PlayerPhysicMovement : MonoBehaviour
     {
         moveInput = movement.ReadValue<Vector2>();
 
+        Vector3 move = CameraForward * moveInput.y + CameraRight * moveInput.x;
+
         if (runIsPressed)
             moveSpeed *= runMultiplier;
 
-        Vector3 moveVelocity = new Vector3(moveInput.x, 0, moveInput.y) * (moveSpeed * Time.deltaTime);
+        Vector3 moveVelocity = move * (moveSpeed * Time.deltaTime);
         m_rigidbody.MovePosition(transform.position + moveVelocity);
 
     }
