@@ -1,16 +1,15 @@
-using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PlayerSlotManager : MonoBehaviour
 {
+    public int maxSlots = 3;
     public List<Transform> slotPositions = new List<Transform>();
-    public const int MAX_SLOTS = 3;
-    public int availableSlots = 3;
-
-    [FormerlySerializedAs("pickables")] public Queue<Item> items = new Queue<Item>();
+    public Transform fridgeSlot;
+    
+    Queue<Item> items = new Queue<Item>();
+    int availableSlots;
 
     private void Start()
     {
@@ -18,6 +17,7 @@ public class PlayerSlotManager : MonoBehaviour
         PlayerInteraction.onTakeObject += TakeSlot;
         PlayerInteraction.onReleaseObject -= ReleaseSlot;
         PlayerInteraction.onReleaseObject += ReleaseSlot;
+        availableSlots = maxSlots;
     }
 
     public void TakeSlot(Item item)
@@ -65,17 +65,22 @@ public class PlayerSlotManager : MonoBehaviour
                 item.transform.DOScale(Vector3.zero, .2f).OnComplete(() => Destroy(item));
             });
         }
-
+        availableSlots = maxSlots;
         return points;
     }
 
     void MoveToSlot(Item item)
     {
-        int index = MAX_SLOTS - availableSlots;
-        Transform slot = slotPositions[index];
-        item.transform.DOMove(slot.position, .4f).OnComplete(() =>
+        if (item is Fridge)
         {
-            item.transform.parent = slot;
-        });
+            item.transform.DOMove(fridgeSlot.position, .4f).OnComplete(() => { item.transform.parent = fridgeSlot; });
+            item.transform.DORotate(fridgeSlot.rotation.eulerAngles, .4f);
+        }
+        else
+        {
+            int index = (maxSlots - 1) - availableSlots;
+            Transform slot = slotPositions[index];
+            item.transform.DOMove(slot.position, .4f).OnComplete(() => { item.transform.parent = slot; });
+        }
     }
 }

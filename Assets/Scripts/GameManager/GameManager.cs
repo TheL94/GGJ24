@@ -66,10 +66,10 @@ public class GameManager : MonoBehaviour
         Debug.Log("enjoy the spawning");
         yield return null;
         gamePhase = GamePhase.GAMESTART;
-        enemySpawner.StartSpawner();
-        bigItemSpawner.StartSpawner();
-        mediumItemSpawner.StartSpawner();
-        smallItemSPawner.StartSpawner();
+        enemySpawner?.StartSpawner();
+        bigItemSpawner?.StartSpawner();
+        mediumItemSpawner?.StartSpawner();
+        smallItemSPawner?.StartSpawner();
         Debug.Log("staerted spawning");
         yield return null;
         gamePhase = GamePhase.PLAYNG;
