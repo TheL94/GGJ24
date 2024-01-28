@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 {
 
     private static GameManager _instance;
-   
+
     public static GameManager Instance
     {
         get
@@ -79,7 +79,12 @@ public class GameManager : MonoBehaviour
         nonItemFridge.SetActive(false);
         UIManager.Instance.stealTheFridge.gameObject.SetActive(true);
     }
-    
+
+    public void TriggerGameOver()
+    {
+        StartCoroutine(CoGameOver());
+    }
+
     public IEnumerator CoGameOver()
     {
         //start end cutscene
@@ -87,10 +92,10 @@ public class GameManager : MonoBehaviour
         yield return null;
         //high score check
 
-        if (Points >= scores.highScores[scores.highScores.Count-1].Score)
+        if (Points >= scores.highScores[scores.highScores.Count - 1].Score)
         {
             UIManager.Instance.highscoreInsertion.gameObject.SetActive(true);
-            UIManager.Instance.finalScore.text = Points+"";
+            UIManager.Instance.finalScore.text = Points + "";
         }
     }
 
@@ -120,12 +125,12 @@ public class GameManager : MonoBehaviour
 [System.Serializable]
 public class HighScore
 {
-   public string Name;
-   public int Score;
+    public string Name;
+    public int Score;
 }
 
 [System.Serializable]
 public class Scores
 {
-    public List<HighScore> highScores; 
+    public List<HighScore> highScores;
 }
