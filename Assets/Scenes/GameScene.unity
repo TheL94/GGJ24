@@ -22765,6 +22765,9 @@ MonoBehaviour:
   smallItemSPawner: {fileID: 83057936}
   itemFridge: {fileID: 0}
   nonItemFridge: {fileID: 0}
+  menu:
+    sceneAsset: {fileID: 102900000, guid: 232edde55139ee6419d988790d3cd3fd, type: 3}
+    sceneName: mainMenu
   gamePhase: 0
 --- !u!4 &975775814
 Transform:
@@ -50069,7 +50072,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2073991127}
-  m_LocalRotation: {x: -0.014430274, y: -0.934845, z: -0.35269487, w: 0.038249355}
+  m_LocalRotation: {x: -0.014430449, y: -0.934845, z: -0.35269487, w: 0.03824942}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
