@@ -18,7 +18,6 @@ public class Item : MonoBehaviour, IInteractable
     public ItemSize size;
     public int maxValue;
     public int minValue;
-    public float animationDuration = .3f;
 
     private Collider coll;
     
@@ -36,9 +35,7 @@ public class Item : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        transform.DOScale(Vector3.zero, animationDuration).OnComplete(() =>
-        {
-            
-        });
+        coll.enabled = false;
+        
     }
 }
