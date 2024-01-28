@@ -27,6 +27,9 @@ public class Damage : MonoBehaviour, IDamageable
 
     void IDamageable.Damage(int damage)
     {
+        if (m_CurrentVulnerability > 0)
+            return;
+
         m_CurrentHealth -= damage;
         m_CurrentVulnerability = vulnerability;
         m_AudioSource.Play();
