@@ -24,6 +24,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI finalScore;
     public TextMeshProUGUI currentScore;
     public TMP_InputField Name;
+
+    public TextMeshProUGUI stealTheFridge;
     private void Awake()
     {
         if (_instance)
