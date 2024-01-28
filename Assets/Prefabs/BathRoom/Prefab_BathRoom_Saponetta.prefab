@@ -66,10 +66,41 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1af2887e294a64d40a36e7f443d9b292,
         type: 3}
       propertyPath: m_Name
-      value: Mesh_BathRoom_Saponetta
+      value: Prefab_BathRoom_Saponetta
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1af2887e294a64d40a36e7f443d9b292,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -7885966805592741780}
   m_SourcePrefab: {fileID: 100100000, guid: 1af2887e294a64d40a36e7f443d9b292, type: 3}
+--- !u!1 &2199008938656182547 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1af2887e294a64d40a36e7f443d9b292,
+    type: 3}
+  m_PrefabInstance: {fileID: 1316488339495291970}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &-7885966805592741780
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2199008938656182547}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.28998768, y: 0.082853615, z: 0.16570725}
+  m_Center: {x: 1.5844674, y: 0.809517, z: -0.2789804}
