@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ExtractionArea : MonoBehaviour
 {
-
     LayerMask checklayer;
     // Start is called before the first frame update
     void Start()
@@ -24,7 +23,7 @@ public class ExtractionArea : MonoBehaviour
         if(other.GetComponentInParent<Item>())
         {
             var item = other.GetComponentInParent<Item>();
-            GameManager.Instance.Points += item.value;
+            GameManager.Instance.Points += item.Value;
             item.DestroyItem();
             Debug.Log("the score is: " + GameManager.Instance.Points);
         }

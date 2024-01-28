@@ -1,39 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public class Item : MonoBehaviour, IInteractable
 { 
     public enum ItemSize
     {
-        Small,
-        Medium,
-        Big
+        Small = 1,
+        Medium = 2, 
+        Big = 3
     }
+
+    public bool Picked { get; set; }
+    public int Value{ get; private set; }
+    
     public ItemSize size;
-    private Collider coll;
-    [HideInInspector]
-    public int value;
     public int maxValue;
     public int minValue;
-    // Start is called before the first frame update
+    public float animationDuration = .3f;
+
+    private Collider coll;
+    
     void Start()
     {
-       value = Random.Range(minValue, maxValue);
+       Value = Random.Range(minValue, maxValue);
        coll = gameObject.GetComponentInChildren<Collider>();
     }
-
-
+    
     public void DestroyItem()
     {
         Debug.Log("destroyeed:" + gameObject.name);
         Destroy(this.gameObject);
     }
-    // Update is called once per frame
-    void Update()
+
+    public void Interact()
     {
-        
+        transform.DOScale(Vector3.zero, animationDuration).OnComplete(() =>
+        {
+            
+        });
     }
-
-
 }

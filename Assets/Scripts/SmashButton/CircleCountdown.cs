@@ -15,7 +15,6 @@ public class CircleCountdown : MonoBehaviour
         smeshSprite.fillAmount = SmashButton.startFillAmount;
 
         SmashButton.updateFillAmount += (f => UpdateFillAmount(f));
-        SmashButton.onShowPressSprite += PressSprite;
     }
 
     public void UpdateFillAmount(float f)

@@ -5,11 +5,10 @@ using UnityEngine.InputSystem;
 
 public class SmashButton : MonoBehaviour
 {
-    private PlayerInput playerInput;
+    public PlayerInput playerInput;
     private InputAction smashAction;
 
     public static UnityAction<float> updateFillAmount;
-    public static UnityAction onShowPressSprite;
     public static UnityAction onSmeshWin;
     public static UnityAction onSmeshLose;
 
@@ -22,24 +21,36 @@ public class SmashButton : MonoBehaviour
 
     public static bool isSmeshActive;
 
+    private CircleCountdown circleCountdown; 
+
     private void Start()
     {
-        playerInput = GetComponentInParent<PlayerInput>();
         smashAction = playerInput.actions.FindAction("Smash");
 
         smashAction.performed -= OnButtonPress;
         smashAction.performed += OnButtonPress;
+        smashAction.performed -= ShowPressSprite;
+        smashAction.performed += ShowPressSprite;
 
         fillAmount = startFillAmount;
-        countdownCoroutine = StartCoroutine(Countdown());
         isSmeshActive = true;
+    }
+
+    public void StartCountDown(CircleCountdown countdown)
+    {
+        circleCountdown = countdown;
+        countdownCoroutine = StartCoroutine(Countdown());
     }
 
     private void OnButtonPress(InputAction.CallbackContext ctx)
     {
         fillAmount += increment;
         updateFillAmount?.Invoke(fillAmount);
-        onShowPressSprite?.Invoke();
+    }
+
+    private void ShowPressSprite(InputAction.CallbackContext ctx)
+    {
+        circleCountdown.PressSprite();
     }
 
     IEnumerator Countdown()
