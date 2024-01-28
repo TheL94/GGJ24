@@ -14,11 +14,15 @@ public class PlayerPhysicMovement : MonoBehaviour
     public float rotationTime = 0.5f;
     public float maxSpeed;
 
+    [SerializeField] private GameObject deadRaccoonPrefab;
+    [SerializeField] private Transform deadRaccoonSpawnPosition;
+    [SerializeField] private float ragdollAmount;
     [Space] public float angleThreshold = .1f;
 
     Rigidbody m_rigidbody;
     PlayerInput playerInput;
     Camera mainCamera;
+    IDamageable damageable;
 
     InputAction movement; //take the mf from here
     InputAction run;
@@ -36,7 +40,9 @@ public class PlayerPhysicMovement : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         m_rigidbody = GetComponent<Rigidbody>();
+        damageable = GetComponent<IDamageable>();
 
+        damageable.OnDamaged += OnDamaged;
         mainCamera = Camera.main;
     }
 
@@ -50,8 +56,8 @@ public class PlayerPhysicMovement : MonoBehaviour
         movement.performed += MovementPerformed;
         movement.canceled += MovementCanceled;
 
-        run.performed += RunPerformed;
-        run.canceled += RunCancelled;
+        //run.performed += RunPerformed;
+        //run.canceled += RunCancelled;
 
         m_rigidbody.maxLinearVelocity = maxSpeed;
     }
@@ -61,8 +67,8 @@ public class PlayerPhysicMovement : MonoBehaviour
         jump.performed -= JumpPerformed;
         movement.performed -= MovementPerformed;
         movement.canceled -= MovementCanceled;
-        run.performed -= RunPerformed;
-        run.canceled -= RunCancelled;
+        //run.performed -= RunPerformed;
+        //run.canceled -= RunCancelled;
     }
 
     void FixedUpdate()
@@ -107,6 +113,13 @@ public class PlayerPhysicMovement : MonoBehaviour
     void MovementCanceled(InputAction.CallbackContext ctx)
     {
 
+    }
+
+    void OnDamaged(int damage)
+    {
+        GameObject spawnedRaccoon = Instantiate(deadRaccoonPrefab, deadRaccoonSpawnPosition.position, deadRaccoonSpawnPosition.rotation);
+
+        spawnedRaccoon.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-ragdollAmount, ragdollAmount), Random.Range(-ragdollAmount, ragdollAmount)));
     }
 
     void Move()
