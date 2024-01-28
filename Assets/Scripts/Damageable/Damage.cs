@@ -7,6 +7,7 @@ public class Damage : MonoBehaviour, IDamageable
     float m_CurrentVulnerability;
 
     public Action<int> OnDamaged { get; set; }
+    public Action<int> OnHealed { get; set; }
 
     public float Vulnerability { get => m_CurrentVulnerability; }
 
@@ -30,11 +31,19 @@ public class Damage : MonoBehaviour, IDamageable
         m_CurrentVulnerability = vulnerability;
         m_AudioSource.Play();
 
+        OnDamaged?.Invoke(damage);
+
         if (m_CurrentHealth <= 0)
         {
             //Fucking die
         }
         //TODO something
+    }
+
+    void IDamageable.Heal(int heal)
+    {
+        if (m_CurrentHealth < MaxHealth)
+            m_CurrentHealth += heal;
     }
 
     private void Update()

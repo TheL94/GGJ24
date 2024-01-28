@@ -9,8 +9,8 @@ public class SmashButton : MonoBehaviour
     private InputAction smashAction;
 
     public static UnityAction<float> updateFillAmount;
-    public static UnityAction onSmeshWin;
-    public static UnityAction onSmeshLose;
+    public UnityAction onSmeshWin;
+    public UnityAction onSmeshLose;
 
     public static float startFillAmount = 0.3f;
     public float increment;

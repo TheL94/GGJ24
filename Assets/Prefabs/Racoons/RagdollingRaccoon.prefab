@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6539643856467151339}
   - component: {fileID: 6828300594026359416}
   - component: {fileID: 8829614330225967121}
+  - component: {fileID: 883622259388678412}
   m_Layer: 6
   m_Name: RagdollingRaccoon
   m_TagString: Untagged
@@ -116,6 +117,18 @@ MonoBehaviour:
   playerInput: {fileID: 0}
   increment: 0.04
   decrement: 0.1
+--- !u!114 &883622259388678412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6702020573531626984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7890686b9dc37b488a66ba0fdc3297b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8741743136721898844
 PrefabInstance:
   m_ObjectHideFlags: 0
