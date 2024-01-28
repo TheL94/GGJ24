@@ -303,6 +303,7 @@ Transform:
   - {fileID: 636623497264794572}
   - {fileID: 6314864214662056043}
   - {fileID: 4090939312920179676}
+  - {fileID: 232411979673851392}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7944411986911375045
@@ -387,7 +388,7 @@ MonoBehaviour:
   - {fileID: 6829715228026620747}
   deadRaccoonPrefab: {fileID: 6702020573531626984, guid: 79ce1522f7d7a9847bdac9d87b830fa4,
     type: 3}
-  deadRaccoonSpawnPosition: {fileID: 3635465625395678193}
+  deadRaccoonSpawnPosition: {fileID: 232411979673851392}
   ragdollAmount: 5
   angleThreshold: 0.1
 --- !u!114 &2922194889729665453
@@ -550,6 +551,37 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &4765302791737767900
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 232411979673851392}
+  m_Layer: 7
+  m_Name: FllorPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &232411979673851392
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4765302791737767900}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3635465625395678193}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5660156870404803511
 GameObject:
   m_ObjectHideFlags: 0
