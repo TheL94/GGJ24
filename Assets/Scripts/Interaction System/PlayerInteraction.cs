@@ -43,7 +43,7 @@ public class PlayerInteraction : MonoBehaviour
 
             if (latestInteract is Item item)
             {
-                interactionCanvas.SetActive(true);
+                interactionCanvas?.SetActive(true);
                 interactionCanvas.transform.position = new Vector3(item.transform.position.x, 1000f, item.transform.position.z);
                 Physics.Raycast(new Ray(interactionCanvas.transform.position, Vector3.down), out RaycastHit hit, Mathf.Infinity, itemMask);
                 interactionCanvas.transform.position = new Vector3(item.transform.position.x, hit.point.y + 0.05f, item.transform.position.z);
@@ -51,7 +51,7 @@ public class PlayerInteraction : MonoBehaviour
             }
             else if (latestInteract is SmashInteraction item2)
             {
-                interactionCanvas.SetActive(true);
+                interactionCanvas?.SetActive(true);
                 interactionCanvas.transform.position = new Vector3(item2.transform.position.x, 1000f, item2.transform.position.z);
                 Physics.Raycast(new Ray(interactionCanvas.transform.position, Vector3.down), out RaycastHit hit, Mathf.Infinity, itemMask);
                 interactionCanvas.transform.position = new Vector3(item2.transform.position.x, hit.point.y + 0.05f, item2.transform.position.z);
@@ -70,14 +70,14 @@ public class PlayerInteraction : MonoBehaviour
         {
             Debug.Log("ciao " + other.name);
             latestInteract = null;
-            interactionCanvas.SetActive(false);
+            interactionCanvas?.SetActive(false);
             interactAction.performed -= Interact;
         }
     }
 
     private void Interact(InputAction.CallbackContext ctx)
     {
-        interactionCanvas.SetActive(false);
+        interactionCanvas?.SetActive(false);
         interactAction.performed -= Interact;
         latestInteract.Interact();
 

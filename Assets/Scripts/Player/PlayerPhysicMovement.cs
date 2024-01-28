@@ -155,9 +155,9 @@ public class PlayerPhysicMovement : MonoBehaviour
         //     moveSpeed *= runMultiplier;
         
         if(moveInput.magnitude > 0.1f)
-            animationController.SetRun();
+            animationController?.SetRun();
         else
-            animationController.SetIdle();
+            animationController?.SetIdle();
 
         Vector3 moveVelocity = move * (moveSpeed * Time.deltaTime);
         m_rigidbody.MovePosition(transform.position + moveVelocity);

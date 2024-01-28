@@ -9,7 +9,7 @@ public class CameraZone : MonoBehaviour
     public static List<CameraZone> zones = new List<CameraZone>();
 
     public UnityAction<CameraZone, GameObject> OnPlayerEnter;
-    public UnityAction<CameraZone, GameObject> OnPlayerExit;
+    // public UnityAction<CameraZone, GameObject> OnPlayerExit;
     
     public CinemachineVirtualCamera VirtualCamera;
     public bool isInitialZone = false;
@@ -41,12 +41,12 @@ public class CameraZone : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        var player = other.GetComponent<PlayerInput>();
-        if (player)
-        {
-            OnPlayerExit?.Invoke(this, player.gameObject);
-        }
-    }
+    // private void OnTriggerExit(Collider other)
+    // {
+    //     var player = other.GetComponent<PlayerInput>();
+    //     if (player)
+    //     {
+    //         OnPlayerExit?.Invoke(this, player.gameObject);
+    //     }
+    // }
 }

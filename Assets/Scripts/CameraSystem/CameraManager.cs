@@ -14,10 +14,11 @@ public class CameraManager : MonoBehaviour
         foreach (var zone in CameraZone.zones)
         {
             zone.OnPlayerEnter += HandlePlayerEnter;
-            zone.OnPlayerExit += HandlePlayerExit;
+            // zone.OnPlayerExit += HandlePlayerExit;
 
             if (zone.isInitialZone)
             {
+                activeZone = zone;
                 zone.VirtualCamera.gameObject.SetActive(true);
             }
             else
@@ -38,6 +39,8 @@ public class CameraManager : MonoBehaviour
 
     void ActivateZone(CameraZone zone)
     {
+        if(zone == activeZone) return;
+        
         if (currentRoutine != null)
             StopCoroutine(currentRoutine);
         currentRoutine = StartCoroutine(WaitForCameraTransition(zone));
