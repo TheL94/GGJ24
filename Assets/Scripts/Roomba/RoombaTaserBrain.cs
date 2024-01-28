@@ -19,9 +19,15 @@ public class RoombaTaserBrain : RoombaBrain
     {
         Debug.Log("Pew pew get tased");
 
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, Mathf.Infinity, ~0))
+        if (Physics.Raycast(taserMuzzle.position, transform.forward, out RaycastHit hit, Mathf.Infinity, ~0))
         {
+            taserParticle.SetVector3("ThunderTarget", transform.InverseTransformPoint(hit.transform.position));
+            taserParticle.SetVector3("ThunderStart", transform.InverseTransformPoint(taserMuzzle.position));
+            //taserParticle.SetVector2("Size", new Vector2(taserStunRadius, taserStunRadius));
+
             Collider[] colliders = Physics.OverlapSphere(hit.transform.position, taserStunRadius);
+
+            taserParticle.Play();
 
             foreach (Collider hitCollider in colliders)
             {
