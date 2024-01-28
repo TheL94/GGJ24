@@ -46,10 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df46250847ee8d0479254f7733cb5f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 0
+  size: 3
   maxValue: 150
   minValue: 75
-  animationDuration: 0.3
 --- !u!54 &-392670906457903310
 Rigidbody:
   m_ObjectHideFlags: 0

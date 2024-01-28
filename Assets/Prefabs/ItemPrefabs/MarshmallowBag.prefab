@@ -151,8 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df46250847ee8d0479254f7733cb5f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 0
-  value: 0
+  size: 2
   maxValue: 55
   minValue: 20
 --- !u!54 &-8628057638848196786
