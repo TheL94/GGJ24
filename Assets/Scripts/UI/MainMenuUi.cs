@@ -11,13 +11,16 @@ using UnityEngine.UI;
 
 public class MainMenuUi : MonoBehaviour
 {
+    public SceneField gamplayScene;
+    
     public Scores scores;
     public GameObject higScorePrefab;
     public RectTransform ScoresParent;
 
     public CanvasGroup MainMenu;
     public CanvasGroup ScoreMenu;
-
+    public Image fadeImage;
+    
     public CinemachineVirtualCamera mainCam;
     public CinemachineVirtualCamera scoreCam;
     public CinemachineBrain brain;
@@ -55,7 +58,7 @@ public class MainMenuUi : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("GameScene");
+        fadeImage.DOFade(1, .3f).OnComplete(() => SceneManager.LoadScene(gamplayScene));
     }
 
     public void ExitGame()
