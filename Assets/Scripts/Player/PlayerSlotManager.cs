@@ -8,7 +8,7 @@ public class PlayerSlotManager : MonoBehaviour
     public const int MAX_SLOTS = 3;
     public int availableSlots = 3;
 
-    public Queue<Pickable> pickables = new Queue<Pickable>();
+    public Queue<Item> pickables = new Queue<Item>();
 
     private void Start()
     {
@@ -18,20 +18,20 @@ public class PlayerSlotManager : MonoBehaviour
         PlayerInteraction.onReleaseObject += ReleaseSlot;
     }
 
-    public void TakeSlot(Pickable entity)
+    public void TakeSlot(Item entity)
     {
-        if (entity.picked)
+        if (entity.Picked)
         {
-            Debug.Log("Oggetto già preso");
+            Debug.Log("Oggetto giÃ  preso");
             return;
         }
 
-        if (availableSlots - entity.weight >= 0)
+        if (availableSlots - entity.size >= 0)
         {
-            availableSlots -= entity.weight;
-            entity.picked = true;
+            availableSlots -= (int)entity.size;
+            entity.Picked = true;
             pickables.Enqueue(entity);
-            Debug.Log("Taken " + entity.weight + " slots. Available: " + availableSlots);
+            Debug.Log("Taken " + entity.size + " slots. Available: " + availableSlots);
         }
         else
         {
@@ -43,10 +43,10 @@ public class PlayerSlotManager : MonoBehaviour
     {
         if (pickables.Count > 0)
         {
-            Pickable entity = pickables.Dequeue();
-            availableSlots += entity.weight;
-            entity.picked = false;
-            Debug.Log("Released " + entity.weight + " slots. Available: " + availableSlots);
+            Item entity = pickables.Dequeue();
+            availableSlots += (int)entity.size;
+            entity.Picked = false;
+            Debug.Log("Released " + entity.size + " slots. Available: " + availableSlots);
         }
     }
 }
