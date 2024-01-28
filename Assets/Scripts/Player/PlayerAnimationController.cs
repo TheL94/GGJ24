@@ -27,6 +27,8 @@ public class PlayerAnimationController : MonoBehaviour
 
     public void SetRun()
     {
+        if (activeBottomRacoon == null)
+            activeBottomRacoon = bottonRaccon;
         if (!activeBottomRacoon.GetCurrentAnimatorStateInfo(0).IsName("GoToRunning"))
             activeBottomRacoon.SetTrigger("GoToRunning");
     }

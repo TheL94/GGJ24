@@ -79,9 +79,9 @@ public class PlayerPhysicMovement : MonoBehaviour
     void Start()
     {
         movement = playerInput.actions.FindAction("Movement");
-        jump = playerInput.actions.FindAction("Jump");
+        // jump = playerInput.actions.FindAction("Jump");
 
-        jump.performed += JumpPerformed;
+        // jump.performed += JumpPerformed;
         movement.performed += MovementPerformed;
         movement.canceled += MovementCanceled;
 
@@ -90,7 +90,7 @@ public class PlayerPhysicMovement : MonoBehaviour
 
     void OnDisable()
     {
-        jump.performed -= JumpPerformed;
+        // jump.performed -= JumpPerformed;
         movement.performed -= MovementPerformed;
         movement.canceled -= MovementCanceled;
         //run.performed -= RunPerformed;
