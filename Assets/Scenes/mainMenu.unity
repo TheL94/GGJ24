@@ -8277,8 +8277,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gamplayScene:
-    sceneAsset: {fileID: 102900000, guid: 1116bc91a0f331940aba6da9c07cb845, type: 3}
-    sceneName: LevelDesign
+    sceneAsset: {fileID: 102900000, guid: 78793f2defeb39c4da312d4b667f4e1f, type: 3}
+    sceneName: GameScene
   scores:
     highScores:
     - Name: Bob
