@@ -9301,6 +9301,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerRacconOK
       objectReference: {fileID: 0}
+    - target: {fileID: 5149671028847422862, guid: d7a62cad9de933e47af4e59b4ca7260e,
+        type: 3}
+      propertyPath: interactionCanvas
+      value: 
+      objectReference: {fileID: 1475688583}
     - target: {fileID: 7944411986911375045, guid: d7a62cad9de933e47af4e59b4ca7260e,
         type: 3}
       propertyPath: m_Camera
@@ -22421,7 +22426,7 @@ Transform:
   m_GameObject: {fileID: 973733586}
   serializedVersion: 2
   m_LocalRotation: {x: 0.26945737, y: -0.6537528, z: 0.26945737, w: 0.6537528}
-  m_LocalPosition: {x: -1.594, y: 9.57, z: 1.371}
+  m_LocalPosition: {x: -1.504, y: 11.06, z: 1.371}
   m_LocalScale: {x: 0.059787244, y: 0.15508743, z: 0.0983282}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -26990,8 +26995,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1130180338}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3224676, y: 0, z: 0, w: 0.9465805}
-  m_LocalPosition: {x: -0.6188612, y: 8.739338, z: -8.324394}
+  m_LocalRotation: {x: 0.26945737, y: -0.6537528, z: 0.26945737, w: 0.6537528}
+  m_LocalPosition: {x: -4.997536, y: 11.549338, z: 21.41228}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
