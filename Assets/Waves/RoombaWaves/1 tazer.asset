@@ -14,16 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveName: 1 tazer
   shuffleOnSpawn: 1
+  timeBeforeNextWave: 60
   isInfinite: 0
   unitsToSpawn:
-  - prefab: {fileID: 0}
+  - prefab: {fileID: 71385966583641626, guid: e2296d323aba8614b8c97ec888496f20, type: 3}
     unitName: 
     slotsOccupied: 0
     count: 0
-    amountToSpawn: 0
-  - prefab: {fileID: 0}
-    unitName: 
-    slotsOccupied: 0
-    count: 0
-    amountToSpawn: 0
+    amountToSpawn: 1
   unitsLeft: 0

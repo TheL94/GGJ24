@@ -14,6 +14,7 @@ public class RoombaBrain : MonoBehaviour
     public RoombaFOV turningRoombaFov;
 
     [SerializeField] LayerMask playerLayerMask;
+    [SerializeField] LayerMask floorLayerMask;
 
     public float speed;
     public float turningSpeed;
@@ -107,6 +108,9 @@ public class RoombaBrain : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (floorLayerMask == (floorLayerMask | (1 << collision.gameObject.layer)))
+            return;
+
         numberOfCollisions++;
         Bumped = numberOfCollisions > 0;
 
@@ -116,6 +120,9 @@ public class RoombaBrain : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
+        if (floorLayerMask == (floorLayerMask | (1 << collision.gameObject.layer)))
+            return;
+
         numberOfCollisions--;
         Bumped = numberOfCollisions > 0;
 

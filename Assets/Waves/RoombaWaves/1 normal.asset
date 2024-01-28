@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveName: 1 normal
   shuffleOnSpawn: 1
-  timeBeforeNextWave: 15
+  timeBeforeNextWave: 60
   isInfinite: 0
   unitsToSpawn:
   - prefab: {fileID: 71385966583641626, guid: 106b71496fb9b764e8bd71562e7bd718, type: 3}
     unitName: 
     slotsOccupied: 0
     count: 0
-    amountToSpawn: 0
+    amountToSpawn: 1
   unitsLeft: 0

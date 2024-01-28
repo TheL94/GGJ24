@@ -14,6 +14,7 @@ public class SelfDestruct : MonoBehaviour
     {
         if (collision.transform.GetComponent<IDamageable>() is IDamageable damageable)
         {
+            explosionVFX.gameObject.AddComponent<TimedDeath>();
             explosionVFX.transform.parent = null;
             explosionVFX.Play();
 
@@ -29,7 +30,7 @@ public class SelfDestruct : MonoBehaviour
                     rb.AddExplosionForce(explosionForce, explosionPos, explosionRadius, 3.0f);
             }
 
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }
