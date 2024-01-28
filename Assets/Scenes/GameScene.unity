@@ -1787,6 +1787,8 @@ MonoBehaviour:
   bigItemSpawner: {fileID: 1459444709}
   mediumItemSpawner: {fileID: 1451321478}
   smallItemSPawner: {fileID: 83057936}
+  itemFridge: {fileID: 0}
+  nonItemFridge: {fileID: 0}
   gamePhase: 0
 --- !u!4 &975775814
 Transform:
@@ -2629,6 +2631,7 @@ MonoBehaviour:
   finalScore: {fileID: 597540823}
   currentScore: {fileID: 1754616196}
   Name: {fileID: 676920557}
+  stealTheFridge: {fileID: 0}
 --- !u!114 &1363550421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3102,6 +3105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbe7f6a4305762b488fec93d0135f3b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vulnerability: 2
   startingHealth: 3
 --- !u!1 &1754616195
 GameObject:
