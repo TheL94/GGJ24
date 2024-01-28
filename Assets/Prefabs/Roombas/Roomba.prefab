@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 237193281317864157}
   - component: {fileID: 8143472241445515842}
   - component: {fileID: 6589319410044407758}
+  - component: {fileID: 8133776031075459691}
   - component: {fileID: 1281082542567222928}
   - component: {fileID: 1890107978481718449}
-  - component: {fileID: 8133776031075459691}
   - component: {fileID: 2103992397530608897}
   - component: {fileID: 7090492322487782564}
   m_Layer: 0
@@ -38,6 +38,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9028996453309939075}
+  - {fileID: 9122324711077648472}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &237193281317864157
@@ -111,6 +112,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &8133776031075459691
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71385966583641626}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 537bbeb1eb5ee684b9163494cf3ef372, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1281082542567222928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,27 +170,7 @@ MonoBehaviour:
   nRay: 50
   degrees: 360
   distance: 8
---- !u!95 &8133776031075459691
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 71385966583641626}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 537bbeb1eb5ee684b9163494cf3ef372, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  shootingPoint: {fileID: 9122324711077648472}
 --- !u!114 &2103992397530608897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,6 +186,7 @@ MonoBehaviour:
   nRay: 50
   degrees: 180
   distance: 5
+  shootingPoint: {fileID: 9122324711077648472}
 --- !u!54 &7090492322487782564
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -211,6 +214,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 1
+--- !u!1 &1748881909477589138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9122324711077648472}
+  m_Layer: 0
+  m_Name: RaycastShooter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9122324711077648472
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748881909477589138}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1677411382820239899}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7308116947012044465
 GameObject:
   m_ObjectHideFlags: 0

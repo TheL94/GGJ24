@@ -67,9 +67,9 @@ public class PlayerMovementBehaviour : MonoBehaviour
         var destroyable = hit.gameObject.GetComponent<ExplodingInteraction>();
         if (destroyable != null)
         {
-            if (Speed >= destroyable.breakForce)
-                destroyable.Break();
-            return;
+            //if (Speed >= destroyable.breakForce)
+            //    destroyable.Break();
+            //return;
         }
 
         Rigidbody body = hit.collider.attachedRigidbody;
