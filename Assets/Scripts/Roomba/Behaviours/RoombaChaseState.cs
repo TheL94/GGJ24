@@ -8,7 +8,7 @@ public class RoombaChaseState : RoombaState
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
         brainInstance.m_audioSource.Stop();
-        brainInstance.m_audioSource.clip = brainInstance.m_audioSource.clip;
+        brainInstance.m_audioSource.clip = brainInstance.audioMove;
         brainInstance.m_audioSource.Play();
     }
 
